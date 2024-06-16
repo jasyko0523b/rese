@@ -1,0 +1,101 @@
+.username {
+    text-align: center;
+}
+.flexbox {
+    display: flex;
+    padding: 0px 50px;
+    justify-content: center;
+}
+.registration-container {
+    width: 40%;
+}
+.favorite-container {
+    width: 60%;
+}
+
+
+
+.registration__item {
+    width: 80%;
+    background-color: #305dff;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+.registration__header {
+    display: flex;
+    color: #fff;
+    justify-content: space-between;
+}
+.registration__name {
+    display: inline-block;
+}
+.registration__name::before {
+    display: inline-block;
+    content: "";
+    width: 24px;
+    height: auto;
+    aspect-ratio: 1/1;
+    margin-right: 20px;
+    background-image: url(../img/clock.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+.clock-icon {
+    width: 24px;
+    height: auto;
+    aspect-ratio: 1/1;
+}
+.chancel-button {
+    position: relative;
+    appearance: none;
+    width: 24px;
+    height: auto;
+    aspect-ratio: 1/1;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    background-color: transparent;
+}
+.chancel-button::before {
+    position: absolute;
+    content: "";
+    width: 70%;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    background-color: #fff;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.chancel-button::after {
+    position: absolute;
+    content: "";
+    width: 70%;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+    background-color: #fff;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.chancel-button:hover{
+    cursor: pointer;
+}
+
+
+.table__wrap {
+    margin-top: 10px;
+    padding: 15px;
+    height: 80%;
+}
+.registration__table {
+    color: #fff;
+}
+.registration__table th {
+    width: 50%;
+    height: 40px;
+    text-align: left;
+    font-weight: 100;
+}

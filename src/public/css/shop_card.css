@@ -1,0 +1,66 @@
+.shop-card-area{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 10px;
+}
+.shop-card {
+    width: 250px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.card-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+}
+
+.tag-area{
+    display: flex;
+}
+
+.tag-item{
+    font-size: small;
+    margin-right: 5px;
+}
+.tag-item::before{
+    content: '#';
+}
+
+.card-text{
+    padding: 20px;
+}
+.card-title{
+    margin: 0px;
+}
+.card-footer{
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+.details-button{
+    cursor: pointer;
+    appearance: none;
+    padding: 5px 15px;
+    color: #fff;
+    background-color: #305dff;
+    border: none;
+    border-radius: 5px;
+}
+
+.favorite-button{
+    cursor: pointer;
+    appearance: none;
+    width: 30px;
+    height: auto;
+    aspect-ratio: 1/1;
+    border: none;
+    background-color: red;
+    mask-image: url(../img/heart.svg);
+}
+
+/* グレーアウトしたハートの色、仮置き */
+.favorite-button.is-active{
+    background-color: #305dff;
+}

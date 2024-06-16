@@ -1,0 +1,25 @@
+.search-box {
+    position: fixed;
+    display: flex;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.search-box select,input{
+    height: 34px;
+    border: none;
+    border-radius: 5px;
+}
+.search-box select{
+    width: 100px;
+}
+.search-box input{
+    width: 200px;
+}
+
+.shop-card-area {
+    margin: 20px;
+}

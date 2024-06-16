@@ -1,0 +1,100 @@
+.content-wrap {
+    display: flex;
+    padding: 0px 20px;
+}
+
+.shop-details-area {
+    width: 100%;
+    padding: 15px;
+}
+
+.back-button {
+    cursor: pointer;
+    padding: 0px;
+    width: 26px;
+    aspect-ratio: 1/1;
+    color: black;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    vertical-align: middle;
+}
+.shop-name {
+    display: inline-block;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+.shop-img {
+    width: 100%;
+}
+.tag-area {
+    margin: 20px 0px;
+    display: flex;
+    gap: 5px 5px;
+}
+.tag__item::before {
+    content: "#";
+}
+
+.registration-area {
+    position: relative;
+    width: 100%;
+    margin-top: -5%;
+    margin-left: 20px;
+    padding: 0px 20px;
+    color: #fff;
+    background-color: #305dff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+.registration-area h2{
+    margin: 20px 0px;
+}
+
+.registration-area input,select{
+    border: none;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.registration-area input{
+    width: 200px;
+}
+.registration-area select{
+    width: 100%;
+}
+
+.confirmation__table-wrap {
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+.confirmation__table {
+    width: 100%;
+    color: #fff;
+}
+
+.confirmation__table th {
+    padding: 5px;
+    text-align: left;
+    font-weight: normal;
+}
+
+.submit-button {
+    cursor: pointer;
+    appearance: none;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 100%;
+    left: 0px;
+    transform: translate(0, -100%);
+    color: #fff;
+    background-color: #0538ff;
+    border: none;
+    border-radius: 0 0 5px 5px;
+}
