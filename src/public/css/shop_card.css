@@ -1,7 +1,7 @@
 .shop-card-area{
     display: flex;
     flex-wrap: wrap;
-    gap: 10px 10px;
+    gap: 30px 15px;
 }
 .shop-card {
     width: 250px;
@@ -56,11 +56,12 @@
     height: auto;
     aspect-ratio: 1/1;
     border: none;
-    background-color: red;
+    background-color: #EEE;
+    -webkit-mask-image: url(../img/heart.svg);
     mask-image: url(../img/heart.svg);
 }
 
 /* グレーアウトしたハートの色、仮置き */
 .favorite-button.is-active{
-    background-color: #305dff;
+    background-color: red;
 }

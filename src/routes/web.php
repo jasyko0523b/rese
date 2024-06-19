@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,23 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('shop_all');
-});
-Route::get('/register', function () {
-    return view('register');
+Route::get('/',[ShopController::class, 'index']);
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+Route::post('/',[ShopController::class, 'search']);
+
+Route::middleware('auth')->group(function(){
+    Route::get('/mypage', [AuthController::class, 'index']);
+    Route::put('/favorite', [AuthController::class, 'favorite']);
 });
 Route::get('/thanks', function () {
     return view('thanks');
-});
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/mypage', function () {
-    return view('my_page');
-});
-Route::get('/detail', function () {
-    return view('shop_detail');
 });
 Route::get('/done', function () {
     return view('done');

@@ -7,16 +7,16 @@
 @section('content')
 <div class="content-wrap">
     <div class="shop-details-area">
-        <button class="back-button">＜</button>
-        <div class="shop-name">仙人</div>
-        <img class="shop-img" src="{{ asset('img/sushi.jpg') }}">
+        <button class="back-button" onclick="history.back()">＜</button>
+        <div class="shop-name">{{ $shop->name }}</div>
+        <img class="shop-img" src="{{ $shop->image_url }}">
         <div class="tag-area">
-            <div class="tag__item">東京都</div>
-            <div class="tag__item">寿司</div>
+            <div class="tag__item">{{ $shop->area }}</div>
+            <div class="tag__item">{{ $shop->genre }}</div>
         </div>
-        <div class="sentence">料理長厳選の食材から作る寿司を用いたコースをぜひお楽しみください。食材・味・価格、お客様の満足度を徹底的に追及したお店です。特別な日のお食事、ビジネス接待まで気軽に使用することができます。</div>
+        <div class="sentence">{{ $shop->sentence }}</div>
     </div>
-    <form class="registration-area" action="">
+    <form class="reservation-area" action="">
         <h2>予約</h2>
         <input type="date" name="" id=""><br>
         <select name="" id="">
@@ -33,7 +33,7 @@
             <table class="confirmation__table">
                 <tr>
                     <th>Shop</th>
-                    <td>仙人</td>
+                    <td>{{ $shop->name }}</td>
                 </tr>
                 <tr>
                     <th>Date</th>

@@ -39,7 +39,7 @@
     content: "#";
 }
 
-.registration-area {
+.reservation-area {
     position: relative;
     width: 100%;
     margin-top: -5%;
@@ -50,20 +50,20 @@
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
-.registration-area h2{
+.reservation-area h2{
     margin: 20px 0px;
 }
 
-.registration-area input,select{
+.reservation-area input,select{
     border: none;
     height: 30px;
     margin-bottom: 10px;
     border-radius: 5px;
 }
-.registration-area input{
+.reservation-area input{
     width: 200px;
 }
-.registration-area select{
+.reservation-area select{
     width: 100%;
 }
 

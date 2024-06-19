@@ -22,17 +22,26 @@
                 <span></span>
                 <span></span>
             </button>
-            <a class="site-title" href="/">
+            <a class="site-title nunito-font" href="/">
                 Rese
             </a>
         </div>
-        <nav class="header__nav">
+        <nav class="header__nav nunito-font">
             <ul class="nav-list">
                 <li class="nav-item"><a href="/">Home</a></li>
+                @if( !Auth::check() )
                 <li class="nav-item"><a href="/register">Registration</a></li>
                 <li class="nav-item"><a href="/login">Login</a></li>
-                <li class="nav-item auth"><a href="/">Logout</a></li>
-                <li class="nav-item auth"><a href="/mypage">Mypage</a></li>
+                @endif
+                @if( Auth::check() )
+                <li class="nav-item">
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button>Logout</button>
+                    </form>
+                </li>
+                <li class="nav-item"><a href="/mypage">Mypage</a></li>
+                @endif
             </ul>
 
         </nav>

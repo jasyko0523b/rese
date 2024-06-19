@@ -6,7 +6,7 @@
     padding: 0px 50px;
     justify-content: center;
 }
-.registration-container {
+.reservation-container {
     width: 40%;
 }
 .favorite-container {
@@ -15,22 +15,22 @@
 
 
 
-.registration__item {
+.reservation__item {
     width: 80%;
     background-color: #305dff;
     border-radius: 5px;
     padding: 15px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
-.registration__header {
+.reservation__header {
     display: flex;
     color: #fff;
     justify-content: space-between;
 }
-.registration__name {
+.reservation__name {
     display: inline-block;
 }
-.registration__name::before {
+.reservation__name::before {
     display: inline-block;
     content: "";
     width: 24px;
@@ -90,10 +90,10 @@
     padding: 15px;
     height: 80%;
 }
-.registration__table {
+.reservation__table {
     color: #fff;
 }
-.registration__table th {
+.reservation__table th {
     width: 50%;
     height: 40px;
     text-align: left;

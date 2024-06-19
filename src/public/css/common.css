@@ -4,11 +4,6 @@ body {
 }
 header {
     padding: 20px;
-    font-family: "Nunito Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-variation-settings: "wdth" 100, "YTLC" 500;
 }
 
 .header__inner {
@@ -102,16 +97,26 @@ header {
 .nav-item.auth {
     display: none;
 }
-.nav-item a {
+.nav-item a, .nav-item button {
+    font-weight: 400;
+    appearance: none;
+    cursor: pointer;
     font-size: 24px;
-    font-weight: 500;
+    font-style: normal;
     color: #305dff;
     text-decoration: none;
+    border: none;
+    background-color: transparent;
 }
 
-main,input,select,button{
+.nunito-font{
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100, "YTLC" 500;
+}
+
+main,a,input,select,button{
     font-family: "Noto Sans JP", sans-serif;
     font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
 }

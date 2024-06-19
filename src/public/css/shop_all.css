@@ -1,6 +1,8 @@
 .search-box {
     position: fixed;
     display: flex;
+    flex-wrap: nowrap;
+    z-index: 2;
     top: 20px;
     right: 20px;
     background-color: #fff;
@@ -17,9 +19,27 @@
     width: 100px;
 }
 .search-box input{
+    padding-left: 30px;
     width: 200px;
 }
 
+.input-text-wrap{
+    position: relative;
+    display: inline-block;
+}
+.input-text-wrap::before{
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: auto;
+    top: 50%;
+    left: 5px;
+    aspect-ratio: 1/1;
+    transform: translate(0%,-50%);
+    background-image: url(../img/search.svg);
+}
 .shop-card-area {
-    margin: 20px;
+    display: flex;
+    gap: 30px 15px;
+    justify-content: center;
 }

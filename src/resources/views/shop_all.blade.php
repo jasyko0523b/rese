@@ -7,49 +7,59 @@
 
 @section('content')
 <div class="search-box">
-    <form action="">
-        <select name="" id="">
-            <option value="">東京</option>
-            <option value="">大阪府</option>
+    <form action="/" method="post">
+        @csrf
+        <select name="area" id="">
+            <option value="">All area</option>
+            @foreach ($areas as $area)
+            <option value="{{ $area->area }}">{{ $area->area }}</option>
+            @endforeach
         </select>
-        <select name="" id="">
-            <option value="">寿司</option>
-            <option value="">焼肉</option>
+        <select name="genre" id="">
+            <option value="" selected>All genre</option>
+            @foreach( $genres as $genre )
+            <option value="{{ $genre->genre }}">{{ $genre->genre }}</option>
+            @endforeach
         </select>
-        <input type="text" placeholder="Search...">
+        <div class="input-text-wrap">
+            <input type="text" name="name" placeholder="Search...">
+        </div>
     </form>
 </div>
 <div class="shop-card-area">
+    @foreach ($shops as $shop)
     <div class="shop-card">
-        <img class="card-img" src="{{ asset('img/sushi.jpg')}}" alt="" srcset="">
+        <img class="card-img" src="{{ $shop->image_url }}" alt="" srcset="">
         <div class="card-text">
-            <h3 class="card-title">仙人</h3>
+            <h3 class="card-title">{{ $shop->name }}</h3>
             <div class="tag-area">
-                <div class="tag-item">東京都</div>
-                <div class="tag-item">寿司</div>
+                <div class="tag-item">{{ $shop->area }}</div>
+                <div class="tag-item">{{ $shop->genre }}</div>
             </div>
             <div class="card-footer">
-                <button class="details-button">詳しく見る</button>
-                <button class="favorite-button" name="" id="">
-                </button>
+                <button class="details-button" onclick="location.href='/detail/{{ $shop->id }}'">詳しく見る</button>
+                <form action="/favorite" method="post">
+                    @method('PUT')
+                    @csrf
+                    <input type="hidden" name="shop_id" value="{{ $shop->id }}" />
+                    @if( in_array($shop->id, Auth::user()->favorite) )
+                        <button class="favorite-button is-active" type="submit" name="" id="">
+                    @else
+                        <button class="favorite-button" type="submit" name="" id="">
+                    @endif
+                </form>
             </div>
         </div>
     </div>
-    <div class="shop-card">
-        <img class="card-img" src="{{ asset('img/sushi.jpg')}}" alt="" srcset="">
-        <div class="card-text">
-            <h3 class="card-title">肉</h3>
-            <div class="tag-area">
-                <div class="tag-item">東京都</div>
-                <div class="tag-item">寿司</div>
-            </div>
-            <div class="card-footer">
-                <button class="details-button">詳しく見る</button>
-                <button class="favorite-button" name="" id="">
-                </button>
-            </div>
-        </div>
-    </div>
+    @endforeach
 </div>
+@endsection
 
+@section('js')
+<script>
+window.addEventListener('unload', function(){
+    console.log('bye.');
+});
+
+</script>
 @endsection
