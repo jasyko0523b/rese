@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Shop;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -11,8 +11,21 @@ class AuthController extends Controller
     public function index(Request $request)
     {
         $auth = $request->user();
+
+        $reservations = Reservation::where('user_id', $auth->id)->get();
+        $reserveList = [];
+        foreach($reservations as $reserve){
+            array_push($reserveList, [
+                'shop_name' => Shop::where('id', $reserve->shop_id)->first()->name,
+                'date' => date('Y-m-d', strtotime($reserve->date)),
+                'time' => date('H:i', strtotime($reserve->date)),
+                'number' => $reserve->number,
+            ]);
+
+        }
+
         $favorite = Shop::whereIn('id', $auth->favorite)->get();
-        return view('my_page', compact('auth', 'favorite'));
+        return view('my_page', compact('auth', 'favorite', 'reserveList'));
     }
 
     public function favorite(Request $request){

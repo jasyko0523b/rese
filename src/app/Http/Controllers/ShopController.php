@@ -12,7 +12,7 @@ class ShopController extends Controller
         $shops = Shop::all();
         $areas = Shop::groupBy('area')->get(['area']);
         $genres = Shop::groupBy('genre')->get(['genre']);
-        return view('shop_all', compact('shops','areas','genres'));
+        return view('shop_all', compact('shops', 'areas', 'genres'));
     }
 
     public function search(Request $request)
@@ -28,14 +28,14 @@ class ShopController extends Controller
             })->when($genre, function ($query, $genre) {
                 return $query->where('genre', $genre);
             })->when($name, function ($query, $name) {
-                return $query->where('name', 'LIKE', '%'.$name.'%');
+                return $query->where('name', 'LIKE', '%' . $name . '%');
             })->get();
         }
 
         $areas = Shop::groupBy('area')->get(['area']);
         $genres = Shop::groupBy('genre')->get(['genre']);
 
-        return view('shop_all', compact('shops','areas','genres'));
+        return view('shop_all', compact('shops', 'areas', 'genres'));
     }
 
 
@@ -44,4 +44,5 @@ class ShopController extends Controller
         $shop = Shop::where('id', $shop_id)->first();
         return view('shop_detail', ['shop' => $shop]);
     }
+
 }

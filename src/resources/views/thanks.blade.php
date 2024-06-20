@@ -7,6 +7,8 @@
 @section('content')
 <div class='message-box'>
     <p class="message">会員登録ありがとうございます</p>
-    <button class="login-button">ログインする</button>
+    <form action="/login" method="get">
+        <button class="login-button">ログインする</button>
+    </form>
 </div>
 @endsection

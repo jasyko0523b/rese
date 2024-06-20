@@ -15,9 +15,9 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
             $table->integer('shop_id');
-            $table->date('date');
+            $table->integer('user_id');
+            $table->dateTime('date');
             $table->integer('number');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();

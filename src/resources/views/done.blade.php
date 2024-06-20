@@ -7,6 +7,6 @@
 @section('content')
 <div class='message-box'>
     <p class="message">ご予約ありがとうございます</p>
-    <button class="back-button">戻る</button>
+    <button class="back-button" onclick="history.back()">戻る</button>
 </div>
 @endsection

@@ -42,8 +42,12 @@
                     @method('PUT')
                     @csrf
                     <input type="hidden" name="shop_id" value="{{ $shop->id }}" />
-                    @if( in_array($shop->id, Auth::user()->favorite) )
+                    @if(Auth::check())
+                        @if( in_array($shop->id, Auth::user()->favorite) )
                         <button class="favorite-button is-active" type="submit" name="" id="">
+                        @else
+                        <button class="favorite-button" type="submit" name="" id="">
+                        @endif
                     @else
                         <button class="favorite-button" type="submit" name="" id="">
                     @endif
@@ -57,9 +61,8 @@
 
 @section('js')
 <script>
-window.addEventListener('unload', function(){
-    console.log('bye.');
-});
-
+    window.addEventListener('unload', function() {
+        console.log('bye.');
+    });
 </script>
 @endsection

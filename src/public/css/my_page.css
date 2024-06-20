@@ -3,23 +3,30 @@
 }
 .flexbox {
     display: flex;
-    padding: 0px 50px;
+    padding: 0px;
     justify-content: center;
 }
 .reservation-container {
     width: 40%;
+    padding-right: 10px;
 }
 .favorite-container {
-    width: 60%;
+    width: 50%;
+    padding-left: 10px;
 }
 
 
+.reservation-card-area{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 15px;
+}
 
-.reservation__item {
-    width: 80%;
+.reservation-card {
+    width: 400px;
     background-color: #305dff;
     border-radius: 5px;
-    padding: 15px;
+    padding: 30px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 .reservation__header {
@@ -42,11 +49,6 @@
     background-repeat: no-repeat;
     background-position: center;
     vertical-align: middle;
-}
-.clock-icon {
-    width: 24px;
-    height: auto;
-    aspect-ratio: 1/1;
 }
 .chancel-button {
     position: relative;
@@ -87,15 +89,12 @@
 
 .table__wrap {
     margin-top: 10px;
-    padding: 15px;
-    height: 80%;
 }
 .reservation__table {
     color: #fff;
 }
 .reservation__table th {
-    width: 50%;
+    width: 100px;
     height: 40px;
     text-align: left;
-    font-weight: 100;
 }
