@@ -1,0 +1,114 @@
+.content-wrap {
+    padding: 0px 20px;
+}
+
+.card{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.card-header{
+    padding: .5rem;
+    border-bottom: #EEE 1px solid;
+}
+.card-header ul{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+}
+.tab-link{
+    display: block;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    color: #7F7F7F;
+    background-color: transparent;
+    text-decoration: none;
+}
+.tab-link.active{
+    color: #fff;
+    background-color: #305dff;
+}
+
+.tab-pane{
+    display: none;
+}
+.tab-pane.active{
+    display: block;
+}
+
+
+.shop-details-area{
+    width: 100%;
+    padding: 20px;
+}
+
+.shop-name {
+    display: inline-block;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+.shop-img {
+    width: 100%;
+}
+.tag-area {
+    margin: 20px 0px;
+    display: flex;
+    gap: 5px 5px;
+}
+.tag__item::before {
+    content: "#";
+}
+
+
+
+
+
+.edit-area{
+    padding: 20px;
+}
+
+.group-row{
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.group-row label{
+    text-align: left;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+
+.group-row input{
+    flex: 0 0 80%;
+    max-width: 80%;
+    height: calc(2.25rem);
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+.group-row textarea{
+    flex: 0 0 80%;
+    max-width: 80%;
+    min-height: 4rem;
+    resize: vertical;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.align-right{
+    text-align: right;
+}
+
+.submit-button {
+    cursor: pointer;
+    appearance: none;
+    padding: .5rem 1rem;
+    color: #fff;
+    background-color: #305dff;
+    border: none;
+    border-radius: 5px;
+}

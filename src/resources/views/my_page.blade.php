@@ -25,19 +25,44 @@
                         </tr>
                         <tr>
                             <th>Date</th>
-                            <td>{{$reserve['date']}}</td>
+                            <td class="date">{{$reserve['date']}}</td>
                         </tr>
                         <tr>
                             <th>Time</th>
-                            <td>{{$reserve['time']}}</td>
+                            <td class="time">{{$reserve['time']}}</td>
                         </tr>
                         <tr>
                             <th>Number</th>
-                            <td>{{$reserve['number']}}人</td>
+                            <td class="number">{{$reserve['number']}}人</td>
                         </tr>
                     </table>
-
+                    <button class="edit-button"></button>
                 </div>
+                <form class="edit-form" action="/reserve/update" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $reserve['id'] }}">
+                    <div class="group-row">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" id="date" required>
+                    </div>
+                    <div class="group-row">
+                        <label for="time">Time</label>
+                        <select name="time" id="time">
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                        </select>
+                    </div>
+                    <div class="group-row">
+                        <label for="number">Number</label>
+                        <select name="number" id="number">
+                            <option value="1">1人</option>
+                            <option value="2">2人</option>
+                            <option value="3">3人</option>
+                        </select>
+                    </div>
+                    <button class="submit-button" type="submit">予約を修正する</button>
+                </form>
             </div>
             @endforeach
         </div>
@@ -55,7 +80,7 @@
                         <div class="tag-item">{{$shop->genre}}</div>
                     </div>
                     <div class="card-footer">
-                        <button class="details-button">詳しく見る</button>
+                        <button class="details-button" onclick="location.href='/detail/{{ $shop->id }}'">詳しく見る</button>
                         <form action="/favorite" method="post">
                             @method('PUT')
                             @csrf
@@ -76,4 +101,34 @@
     </div>
 </div>
 
+@endsection
+
+
+@section('js')
+<script>
+    var reserveList = document.querySelectorAll('.reservation-card');
+
+    reserveList.forEach((reserve, i) => {
+
+        var dateValue = reserve.querySelector('.date').textContent;
+        var timeValue = reserve.querySelector('.time').textContent;
+        var numberValue = reserve.querySelector('.number').textContent;
+        var dateInput = reserve.querySelector('#date');
+        var timeInput = reserve.querySelector('#time');
+        var numberInput = reserve.querySelector('#number');
+
+        dateInput.value = dateValue;
+        timeInput.value = timeValue;
+        numberInput.value = numberValue.substr(0, numberValue.indexOf('人'));
+
+        var editButton = reserve.querySelector('.edit-button');
+        editButton.classList.add('active');
+        var editForm = reserve.querySelector('.edit-form');
+        if (editButton != null) {
+            editButton.addEventListener('click', () => {
+                editForm.classList.toggle('active');
+            });
+        }
+    });
+</script>
 @endsection

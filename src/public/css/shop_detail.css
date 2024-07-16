@@ -50,20 +50,21 @@
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
-.reservation-area h2{
+.reservation-area h2 {
     margin: 20px 0px;
 }
 
-.reservation-area input,select{
+.reservation-area input,
+select {
     border: none;
     height: 30px;
     margin-bottom: 10px;
     border-radius: 5px;
 }
-.reservation-area input{
-    width: 200px;
+.reservation-area input {
+    width: 100%;
 }
-.reservation-area select{
+.reservation-area select {
     width: 100%;
 }
 
@@ -84,7 +85,7 @@
     font-weight: normal;
 }
 
-.submit-button {
+.reserve-submit-button {
     cursor: pointer;
     appearance: none;
     position: absolute;
@@ -97,4 +98,191 @@
     background-color: #0538ff;
     border: none;
     border-radius: 0 0 5px 5px;
+}
+
+.reviews-area {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: inset 2px 3px rgba(0, 0, 0, 0.3);
+}
+.reviews-top-title {
+    margin: auto;
+}
+
+.reviews-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.reviews-average {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+}
+.reviews-average-value {
+    font-size: 42px;
+    margin-right: 10px;
+}
+.reviews-average-star {
+    position: relative;
+    display: inline-block;
+    font-size: 36px;
+    width: 180px;
+    height: 54px;
+}
+.reviews-average-star::before {
+    position: absolute;
+    content: "★★★★★";
+    top: 0px;
+    left: 0px;
+    color: #c4c4c4;
+}
+.reviews-average-star::after {
+    position: absolute;
+    content: "★★★★★";
+    top: 0px;
+    left: 0px;
+    width: calc(var(--rate) * 1em);
+    height: 54px;
+    color: #feca2f;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.review__button {
+    appearance: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: gray;
+    background-color: #eee;
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.3);
+}
+.review__button.active{
+    color: #fff;
+    background-color: #305dff;
+}
+
+.review-list{
+    display: none;
+}
+.review-list.active{
+    display: inline;
+}
+
+.review {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.review__header {
+    display: flex;
+    justify-content: space-between;
+}
+.review__header--left {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+.review__header-rank {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.review__header-star {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    width: 80px;
+    height: 24px;
+}
+.review__header-star::before {
+    position: absolute;
+    content: "★★★★★";
+    top: 0px;
+    left: 0px;
+    color: #c4c4c4;
+}
+.review__header-star::after {
+    position: absolute;
+    content: "★★★★★";
+    top: 0px;
+    left: 0px;
+    width: calc(var(--rate) * 1em);
+    height: 24px;
+    color: #feca2f;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.write-area {
+    display: none;
+}
+.write-area.active {
+    display: inline;
+}
+.write-form {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+
+}
+
+.star {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    mask-image: url(../img/star.svg);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+}
+.star:checked {
+    background-color: #feca2f;
+}
+.rating-star > .star:not(:checked) {
+    background-color: #feca2f;
+}
+.star:checked ~ .star {
+    background-color: #c4c4c4;
+}
+.group-row {
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.group-row label,
+.form-label {
+    text-align: left;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+.group-row textarea {
+    flex: 0 0 80%;
+    max-width: 80%;
+    min-height: 4rem;
+    resize: vertical;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.review-submit-button {
+    cursor: pointer;
+    appearance: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #305dff;
+    border: none;
+    border-radius: 5px;
 }

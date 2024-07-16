@@ -1,0 +1,111 @@
+.main-wrap{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 15px;
+}
+
+
+
+.add-form-wrap {
+    display: flex;
+    flex-flow: column;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    padding: 15px;
+    color: #fff;
+    background-color: #FFC107;
+    border-radius: 5px 5px 0 0;
+}
+
+.add-owner-form {
+    display: flex;
+    flex-flow: column;
+    padding: 15px;
+    align-items: center;
+}
+
+.add-owner-form input{
+    appearance: none;
+    margin: 5px;
+    height: 24px;
+    width: 90%;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.input-wrap{
+    width: 100%;
+    margin: 15px;
+}
+
+.input-wrap::before{
+    display: inline-block;
+    content: "";
+    width: 18px;
+    height: auto;
+    aspect-ratio: 1/1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+
+.input-wrap.store-name__wrap::before {
+    background-image: url(../../img/shop.svg);
+}
+.input-wrap.email__wrap::before {
+    background-image: url(../../img/email.svg);
+}
+
+.submit-button__wrap{
+    width: 100%;
+    text-align: right;
+    margin: 20px;
+    padding-right: 5%;
+}
+
+.submit-button{
+    cursor: pointer;
+    padding: 5px 15px;
+    color: #fff;
+    background-color: #FFC107;
+    border: none;
+    border-radius: 3px;
+    text-align: end;
+}
+
+
+
+.owner-table-wrap{
+    width: 400px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.owner-table{
+    width: 100%;
+}
+
+.owner-table-header{
+    border-bottom: black 2px solid;
+    text-align: left;
+}
+.owner-table-header--id{
+    text-align: center;
+}
+
+.owner-table-item--id{
+    text-align: center;
+}
+
+.owner-table tr{
+    border-bottom: #EEE 1px solid;
+}

@@ -41,6 +41,12 @@
                     </form>
                 </li>
                 <li class="nav-item"><a href="/mypage">Mypage</a></li>
+                @can('admin')
+                <li class="nav-item nav-item--blue"><a href="/admin/dashboard">Admin</a></li>
+                @endcan
+                @can('owner')
+                <li class="nav-item nav-item--blue"><a href="/owner/dashboard">Owner</a></li>
+                @endcan
                 @endif
             </ul>
 

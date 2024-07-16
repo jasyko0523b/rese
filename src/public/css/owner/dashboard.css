@@ -1,0 +1,56 @@
+.wrap{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.todays-event-container{
+    width: 100%;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.reservations__table{
+    width: 100%;
+    background-color: #fff;
+    border: #fff 1px solid;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+
+}
+.reservations__table th{
+    border-bottom: #eee 2px solid;
+}
+.reservation__data{
+    text-align: center;
+}
+.reservation__data--right{
+    text-align: right;
+}
+
+.todays-event{
+    padding: 5px;
+    margin: 5px;
+    width: 100%;
+    color: #fff;
+    background-color: #28A745;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+#calendar{
+    padding: 10px;
+    margin: 20px;
+    width: 60vw;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+}
+
+.fc-icon::before{
+    position: relative;
+    top: -25%;
+    left: 0;
+}

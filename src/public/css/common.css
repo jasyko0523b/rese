@@ -31,7 +31,6 @@ header {
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
-
 .menu:hover {
     cursor: pointer;
 }
@@ -45,11 +44,6 @@ header {
     transition: all 0.4s;
 }
 
-.menu.menu.is-active span {
-    width: 50%;
-    top: 0;
-    left: 50%;
-}
 .menu span:nth-of-type(1) {
     width: 30%;
     top: -20%;
@@ -61,6 +55,12 @@ header {
 .menu span:nth-of-type(3) {
     width: 20%;
     top: 20%;
+}
+
+.menu.is-active span {
+    width: 50%;
+    top: 0;
+    left: 50%;
 }
 .menu.is-active span:nth-of-type(1) {
     transform: translateX(-50%) rotate(-45deg);
@@ -77,7 +77,7 @@ header {
 }
 
 .header__nav.is-active {
-    position: absolute;
+    position: fixed;
     display: flex;
     top: 0;
     left: 0;
@@ -109,6 +109,13 @@ header {
     background-color: transparent;
 }
 
+.nav-item--blue a{
+    padding: .25rem .5rem;
+    color: #fff;
+    background-color: #305dff;
+    border-radius: 5px;
+}
+
 .nunito-font{
     font-family: "Nunito Sans", sans-serif;
     font-optical-sizing: auto;
@@ -116,7 +123,7 @@ header {
     font-variation-settings: "wdth" 100, "YTLC" 500;
 }
 
-main,a,input,select,button{
+main,a,input,select,button,textarea{
     font-family: "Noto Sans JP", sans-serif;
     font-optical-sizing: auto;
 }

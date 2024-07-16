@@ -1,0 +1,74 @@
+body {
+    position: relative;
+    background-color: #eee;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+main {
+    flex: 3;
+    padding: 20px;
+}
+
+aside {
+    flex: 1;
+    min-height: 100vh;
+    color: #d6d8d9;
+    background-color: #343a40;
+}
+
+.side-content {
+    padding: 10px 20px;
+    border-bottom: 1px solid #d6d8d9;
+}
+
+.site-title {
+    margin: 0;
+    color: #d6d8d9;
+    font-size: 24px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.nunito-font {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 100, "YTLC" 500;
+}
+
+main,
+aside,
+a,
+input,
+select,
+button,
+textarea {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.menu-wrapper ul {
+    padding: 0px 20px;
+}
+.menu-wrapper li {
+    list-style: none;
+    margin: 15px 0px;
+}
+.menu-wrapper a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #d6d8d9;
+}
+.menu-wrapper button {
+    cursor: pointer;
+    appearance: none;
+    padding: 0;
+    color: #d6d8d9;
+    background-color: transparent;
+    border: none;
+    font-size: medium;
+}

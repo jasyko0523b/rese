@@ -54,5 +54,7 @@ class ShopsTableSeeder extends Seeder
         DB::table('shops')->insert($param);
         $param = ['name' => '木船', 'area' => '大阪府', 'genre' => '寿司', 'sentence' => '毎日店主自ら市場等に出向き、厳選した魚介類が、お鮨をはじめとした繊細な料理に仕立てられます。また、選りすぐりの種類豊富なドリンクもご用意しております。', 'image_url' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg'];
         DB::table('shops')->insert($param);
+        $param = ['owner_id' => '3', 'name' => 'テスト用新規店', 'area' => '神奈川県', 'genre' => '寿司', 'sentence' => 'テストテストテスト。', 'image_url' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg'];
+        DB::table('shops')->insert($param);
     }
 }

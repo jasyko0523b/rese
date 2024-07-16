@@ -15,11 +15,13 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('owner_id')->nullable();
+            $table->foreign('owner_id')->references('id')->on('users');
             $table->String('name');
-            $table->String('area');
-            $table->String('genre');
-            $table->String('sentence');
-            $table->String('image_url');
+            $table->String('area')->nullable();
+            $table->String('genre')->nullable();
+            $table->String('sentence')->nullable();
+            $table->String('image_url')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

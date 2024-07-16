@@ -22,12 +22,13 @@
             @endforeach
         </select>
         <div class="input-text-wrap">
-            <input type="text" name="name" placeholder="Search...">
+            <input type="text" name="searchbox" placeholder="Search...">
         </div>
     </form>
 </div>
 <div class="shop-card-area">
     @foreach ($shops as $shop)
+    @if($shop->name != '新規店舗')
     <div class="shop-card">
         <img class="card-img" src="{{ $shop->image_url }}" alt="" srcset="">
         <div class="card-text">
@@ -55,14 +56,7 @@
             </div>
         </div>
     </div>
+    @endif
     @endforeach
 </div>
-@endsection
-
-@section('js')
-<script>
-    window.addEventListener('unload', function() {
-        console.log('bye.');
-    });
-</script>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shop;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -42,7 +43,21 @@ class ShopController extends Controller
     public function detail($shop_id)
     {
         $shop = Shop::where('id', $shop_id)->first();
-        return view('shop_detail', ['shop' => $shop]);
+        $reviews = Review::where('shop_id', $shop_id)->get()->reverse();
+        return view('shop_detail', compact('shop', 'reviews'));
     }
 
+
+    public function owner_detail(Request $request){
+        $user = $request->user();
+        $shop = Shop::where('owner_id', $user->id)->first();
+        return view('owner.shop_detail', compact('shop'));
+    }
+
+    public function update(Request $request){
+        $user = $request->user();
+        $shop = Shop::where('owner_id', $user->id)->first();
+        $shop->update($request->all());
+        return redirect('owner/shop_detail');
+    }
 }
