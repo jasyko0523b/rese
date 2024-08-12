@@ -7,6 +7,8 @@ use App\Models\Reservation;
 use App\Models\User;
 use App\Models\Shop;
 
+use App\Http\Requests\ReservationRequest;
+
 class ReservationController extends Controller
 {
     public function index(Request $request)
@@ -28,7 +30,7 @@ class ReservationController extends Controller
 
 
 
-    public function reserve(Request $request)
+    public function reserve(ReservationRequest $request)
     {
         $reservation = [
             'shop_id' => $request->shop_id,

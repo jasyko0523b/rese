@@ -127,3 +127,7 @@ main,a,input,select,button,textarea{
     font-family: "Noto Sans JP", sans-serif;
     font-optical-sizing: auto;
 }
+
+main{
+    margin-bottom: 20px;
+}

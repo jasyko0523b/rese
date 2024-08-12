@@ -82,19 +82,35 @@
     flex: 0 0 20%;
     max-width: 20%;
 }
-
-.group-row input{
+.input-field{
     flex: 0 0 80%;
     max-width: 80%;
     height: calc(2.25rem);
     border: 1px solid #ced4da;
     border-radius: 5px;
 }
-.group-row textarea{
-    flex: 0 0 80%;
-    max-width: 80%;
+.input-field--image{
+    border: none;
+}
+.input-field--image::file-selector-button{
+    appearance: none;
+    cursor: pointer;
+    padding: .5rem 1rem;
+    color: #fff;
+    background-color: #305dff;
+    border: none;
+    border-radius: 5px;
+}
+.input-filed--textarea{
     min-height: 4rem;
     resize: vertical;
+}
+
+.image__preview{
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
     border: 1px solid #ced4da;
     border-radius: 5px;
 }
@@ -108,7 +124,7 @@
     appearance: none;
     padding: .5rem 1rem;
     color: #fff;
-    background-color: #305dff;
+    background-color: #0538ff;
     border: none;
     border-radius: 5px;
 }

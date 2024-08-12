@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Shop;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -48,16 +49,44 @@ class ShopController extends Controller
     }
 
 
-    public function owner_detail(Request $request){
+    public function owner_detail(Request $request)
+    {
         $user = $request->user();
         $shop = Shop::where('owner_id', $user->id)->first();
         return view('owner.shop_detail', compact('shop'));
     }
 
-    public function update(Request $request){
+
+
+
+    public function text_update(Request $request)
+    {
         $user = $request->user();
         $shop = Shop::where('owner_id', $user->id)->first();
-        $shop->update($request->all());
+
+        $new_shop = [
+            'name' => $request->name ?? $shop->name,
+            'area' => $request->area ?? $shop->area,
+            'genre' => $request->genre ?? $shop->genre,
+            'sentence' => $request->sentence ?? $shop->sentence,
+        ];
+
+        $shop->update($new_shop);
+        return redirect('owner/shop_detail');
+    }
+
+    public function image_update(Request $request)
+    {
+        $user = $request->user();
+        $shop = Shop::where('owner_id', $user->id)->first();
+
+        $path = $request->file('shop_img')->store('shop_image', 'public');
+
+        $new_shop = [
+            'image_url' => Storage::url($path) ?? $shop->image_url,
+        ];
+
+        $shop->update($new_shop);
         return redirect('owner/shop_detail');
     }
 }

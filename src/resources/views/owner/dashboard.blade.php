@@ -26,12 +26,15 @@
             @endforeach
         </table>
     </div>
+    <!--
     <div id="calendar">
     </div>
+-->
 </div>
 @endsection
 
 @section('js')
+<!--
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
 <script>
     const events = [{
@@ -86,5 +89,5 @@
         calendar.render();
     });
 </script>
-
+-->
 @endsection

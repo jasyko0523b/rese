@@ -6,6 +6,9 @@
 @endsection
 
 @section('content')
+<a href="#">
+    <div id="page-top"></div>
+</a>
 <div class="search-box">
     <form action="/" method="post">
         @csrf
@@ -44,14 +47,14 @@
                     @csrf
                     <input type="hidden" name="shop_id" value="{{ $shop->id }}" />
                     @if(Auth::check())
-                        @if( in_array($shop->id, Auth::user()->favorite) )
-                        <button class="favorite-button is-active" type="submit" name="" id="">
+                    @if( in_array($shop->id, Auth::user()->favorite) )
+                    <button class="favorite-button is-active" type="submit" name="" id="">
                         @else
                         <button class="favorite-button" type="submit" name="" id="">
-                        @endif
-                    @else
-                        <button class="favorite-button" type="submit" name="" id="">
-                    @endif
+                            @endif
+                            @else
+                            <button class="favorite-button" type="submit" name="" id="">
+                                @endif
                 </form>
             </div>
         </div>

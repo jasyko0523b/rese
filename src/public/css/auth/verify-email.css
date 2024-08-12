@@ -1,0 +1,36 @@
+
+.username {
+    text-align: center;
+}
+.message__wrap{
+    width: 400px;
+    margin: auto;
+}
+
+.message-box {
+    display: flex;
+    flex-flow: column;
+    margin: auto;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/2;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+}
+
+.retransmission-box{
+    text-align: right;
+}
+
+.retransmission-box button{
+    padding: .5rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    background-color: #305dff;
+}

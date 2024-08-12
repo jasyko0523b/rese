@@ -16,12 +16,12 @@ class MasterDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $admin = User::create([
+        $admin = User::factory()->create([
             'name' => '社員admin',
             'email' => 'admin@sample.com',
             'password' => bcrypt('admin'),
         ]);
-        $owner = User::create([
+        $owner = User::factory()->create([
             'name' => '社員owner',
             'email' => 'owner@sample.com',
             'password' => bcrypt('owner'),

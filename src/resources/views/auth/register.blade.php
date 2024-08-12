@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/register.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/auth/register.css') }}" />
 @endsection
 
 @section('content')
@@ -21,9 +21,13 @@
         <div class="submit-button__wrap">
             <button class="submit-button" id="submit" type="submit">登録</button>
         </div>
-        @if( $errors->has('name') )
-        {{$errors->first('name')}}
-        @endif
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>
+                {{ $error }}
+            </li>
+            @endforeach
+        </ul>
     </form>
 </div>
 @endsection

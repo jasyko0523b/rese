@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AnnounceMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Shop;
 use App\Models\User;
 
@@ -11,8 +13,8 @@ class AdminController extends Controller
     public function admin()
     {
         $shops = Shop::all();
-        $addresses=[];
-        foreach($shops as $shop){
+        $addresses = [];
+        foreach ($shops as $shop) {
             array_push($addresses, [
                 'id' => $shop->id,
                 'name' => $shop->name,
@@ -44,4 +46,18 @@ class AdminController extends Controller
         return redirect('admin/dashboard');
     }
 
+    public function email_writing()
+    {
+        return view('admin.email_writing');
+    }
+
+
+    public function send_all(Request $request)
+    {
+        $users = User::all();
+        foreach($users as $user) {
+            Mail::to($user)->send(new AnnounceMail());
+        }
+        return redirect('admin/email')->with('message', 'ユーザー全員に送信されました');
+    }
 }

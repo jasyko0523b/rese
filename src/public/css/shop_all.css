@@ -1,27 +1,39 @@
 .search-box {
-    position: fixed;
-    display: flex;
-    flex-wrap: nowrap;
-    z-index: 2;
+    position: absolute;
     top: 20px;
     right: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
+@media screen and (max-width: 768px) {
+    .search-box{
+        position: static;
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 0 20px 20px 20px;
+    }
+}
 
+.search-box form{
+    display: flex;
+    flex-wrap: nowrap;
+}
 .search-box select,input{
-    height: 34px;
+    height: 2.5rem;
     border: none;
     border-radius: 5px;
 }
 .search-box select{
-    width: 100px;
+    flex: 2;
+/*    width: 100px;*/
 }
 .search-box input{
+    flex: 5;
     padding-left: 30px;
-    width: 200px;
+/*    width: 200px;*/
 }
+
 
 .input-text-wrap{
     position: relative;
@@ -38,6 +50,40 @@
     transform: translate(0%,-50%);
     background-image: url(../img/search.svg);
 }
+html{
+    scroll-behavior: smooth;
+}
+#page-top{
+    position: fixed;
+    z-index: 3;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+#page-top::before{
+    cursor: pointer;
+    position: absolute;
+    display: inline-block;
+    content: '';
+    width: 35px;
+    height: auto;
+    aspect-ratio: 1/1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    background-color: #eee;
+    -webkit-mask-image: url(../img/up.svg);
+    mask-image: url(../img/up.svg);
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    vertical-align: middle;
+}
+
 .shop-card-area {
     display: flex;
     gap: 30px 15px;

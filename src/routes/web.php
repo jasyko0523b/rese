@@ -1,12 +1,17 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
-use App\Models\Reservation;
-use App\Models\Shop;
+use App\Http\Controllers\QrController;
+use PHPUnit\Framework\MockObject\Verifiable;
+
+//use GuzzleHttp\Psr7\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +24,38 @@ use App\Models\Shop;
 |
 */
 
+/* メールをかくにんしてくださいのビュー */
+Route::get('/email/verify', function(){
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+/* メールに貼られたリンクを押すと呼ばれるルート */
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request){
+    $request->fulfill();
+    return redirect('/mypage');
+})->middleware(['auth','signed'])->name('verification.verify');
+
+/* メールの再送信をリクエスト */
+Route::post('/email/verification-notification', function(Request $request){
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('message', __('message.retransmission'));
+})->middleware(['auth', 'throttle:6.1'])->name('verification.send');
+
+Route::get('/profile', function (){
+    // メール認証済みのユーザーがこのルートにアクセス可能
+})->middleware('verified');
+
+
+
+
+
 Route::get('/', [ShopController::class, 'index']);
 Route::post('/', [ShopController::class, 'search']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 
 
-Route::middleware('auth')->group(function () {
+//Route::middleware('')->group(function () {
+Route::middleware('verified')->group(function () {
     Route::get('/mypage', [AuthController::class, 'index']);
     Route::put('/favorite', [AuthController::class, 'favorite']);
     Route::post('/review', [AuthController::class, 'review']);
@@ -36,7 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/owner/dashboard', [ReservationController::class, 'index']);
 
     Route::get('/owner/shop_detail', [ShopController::class, 'owner_detail']);
-    Route::post('/owner/update', [ShopController::class, 'update']);
+    Route::post('/owner/text/update', [ShopController::class, 'text_update']);
+    Route::post('/owner/image/update', [ShopController::class, 'image_update']);
 });
 
 
@@ -49,3 +81,10 @@ Route::get('/admin/shop_register', [AdminController::class, 'register']);
 Route::post('/admin/add', [AdminController::class, 'create']);
 
 
+Route::get('/admin/email', [AdminController::class, 'email_writing']);
+Route::post('/admin/email/send_all', [AdminController::class, 'send_all']);
+
+
+Route::get('/qr', [QrController::class, 'index']);
+Route::post('/qr', [QrController::class, 'index'])->name('qr');
+Route::get('/qr/download', [QrController::class, 'download'])->name('qr.download');

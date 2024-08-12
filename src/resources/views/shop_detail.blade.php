@@ -19,10 +19,12 @@
     <form class="reservation-area" action="/reserve" method="post">
         @csrf
         <h2>予約</h2>
-        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-        @if(Auth::check())
-        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+        @if( !Auth::check() || !Auth::user()->hasVerifiedEmail() )
+        <div class="please-login-box">
+            <p>※予約機能は本登録後にご利用いただけます</p>
+        </div>
         @endif
+        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
         <input type="date" name="date" id="date"><br>
         <select name="time" id="time">
             <option value="17:00">17:00</option>
@@ -54,7 +56,17 @@
                 </tr>
             </table>
         </div>
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>
+                {{ $error }}
+            </li>
+            @endforeach
+        </ul>
+        @if( Auth::check() && Auth::user()->hasVerifiedEmail() )
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
         <button class="reserve-submit-button" type="submit">予約する</button>
+        @endif
     </form>
 </div>
 <div class="reviews-area">
@@ -67,7 +79,11 @@
             <div class="reviews-average-star" style="--rate: 4.5"></div>
         </div>
         <div class="review__button-wrap">
+            @if( !Auth::check() || !Auth::user()->hasVerifiedEmail() )
+            <p>※レビュー投稿はログイン後にご利用いただけます</p>
+            @else
             <button class="review__button active">レビューを書く</button>
+            @endif
         </div>
     </div>
     <hr>
@@ -75,7 +91,9 @@
         <form class="write-form" action="/review" method="post">
             @csrf
             <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+            @if(Auth::check())
             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+            @endif
             <div class="group-row">
                 <div class="form-label">評価</div>
                 <div class="rating-star">

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'hoge',
             'email' => 'hogehoge@gmail.com', 'password' => bcrypt('hoge'), 'favorite' => '[1, 2]'
         ];
-        DB::table('users')->insert($param);
+        User::factory()->create($param);
+//        DB::table('users')->insert($param);
     }
 }

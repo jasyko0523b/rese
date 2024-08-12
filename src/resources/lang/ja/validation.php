@@ -147,4 +147,9 @@ return [
     */
 
     'attributes' => [],
+    'values' => [
+        'date' => [
+            'today' => '今日',
+        ],
+    ],
 ];
