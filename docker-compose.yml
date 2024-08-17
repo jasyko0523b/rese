@@ -3,6 +3,7 @@ version: '3.8'
 services:
   nginx:
     image: nginx:1.21.1
+    restart: always
     ports:
       - "80:80"
     volumes:
@@ -12,12 +13,14 @@ services:
       - php
 
   php:
+    restart: always
     build: ./docker/php
     volumes:
       - ./src:/var/www/
 
   mysql:
     image: mysql:8.0.26
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: laravel_db
@@ -31,6 +34,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    restart: always
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=mysql
@@ -43,6 +47,7 @@ services:
   
   mailhog:
     image: mailhog/mailhog
+    restart: always
     ports:
       - "8025:8025"
       - "1025:1025"
