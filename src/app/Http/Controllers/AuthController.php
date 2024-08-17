@@ -7,10 +7,25 @@ use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
-    public function index(Request $request)
+    public function index()
+    {
+        $user = Auth::user();
+        if ($user->hasRole('global_admin')) {
+            return redirect('/admin/dashboard');
+        } elseif ($user->hasRole('shop_admin')) {
+            return redirect('/owner/dashboard');
+        } else {
+            return redirect('/mypage');
+        }
+    }
+
+
+    public function myPage(Request $request)
     {
         $auth = $request->user();
 
@@ -53,7 +68,8 @@ class AuthController extends Controller
 
 
 
-    public function review(Request $request){
+    public function review(Request $request)
+    {
         $review = [
             'shop_id' => $request->shop_id,
             'user_id' => $request->user_id,
@@ -63,5 +79,4 @@ class AuthController extends Controller
         Review::create($review);
         return redirect()->back();
     }
-
 }

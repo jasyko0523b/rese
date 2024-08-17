@@ -12,13 +12,18 @@ class AnnounceMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject;
+    public $content;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($content, $subject)
     {
+        $this->content = $content;
+        $this->subject = $subject;
     }
 
     /**
@@ -28,6 +33,6 @@ class AnnounceMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.announce');
+        return $this->markdown('emails.announce', ['content' => $this->content])->subject($this->subject);
     }
 }

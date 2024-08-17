@@ -54,10 +54,12 @@ class AdminController extends Controller
 
     public function send_all(Request $request)
     {
+        $subject = $request->subject;
+        $content = $request->content;
         $users = User::all();
         foreach($users as $user) {
-            Mail::to($user)->send(new AnnounceMail());
+            Mail::to($user)->send(new AnnounceMail($content, $subject));
         }
-        return redirect('admin/email')->with('message', 'ユーザー全員に送信されました');
+        return redirect('admin/email')->with('message', '送信されました');
     }
 }

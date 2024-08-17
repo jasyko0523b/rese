@@ -40,34 +40,6 @@
 }
 
 
-.shop-details-area{
-    width: 100%;
-    padding: 20px;
-}
-
-.shop-name {
-    display: inline-block;
-    font-size: larger;
-    font-weight: bold;
-    margin-bottom: 20px;
-    margin-left: 10px;
-}
-.shop-img {
-    width: 100%;
-}
-.tag-area {
-    margin: 20px 0px;
-    display: flex;
-    gap: 5px 5px;
-}
-.tag__item::before {
-    content: "#";
-}
-
-
-
-
-
 .edit-area{
     padding: 20px;
 }
@@ -78,7 +50,7 @@
     margin-bottom: 10px;
 }
 .group-row label{
-    text-align: left;
+/*    text-align: left;*/
     flex: 0 0 20%;
     max-width: 20%;
 }
@@ -89,32 +61,10 @@
     border: 1px solid #ced4da;
     border-radius: 5px;
 }
-.input-field--image{
-    border: none;
-}
-.input-field--image::file-selector-button{
-    appearance: none;
-    cursor: pointer;
-    padding: .5rem 1rem;
-    color: #fff;
-    background-color: #305dff;
-    border: none;
-    border-radius: 5px;
-}
-.input-field--sentence{
-    min-height: 4rem;
+.input-field--textarea{
+    min-height: 20rem;
     resize: vertical;
 }
-
-.image__preview{
-    padding: 20px;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/9;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-}
-
 .align-right{
     text-align: right;
 }

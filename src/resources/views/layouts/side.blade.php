@@ -28,6 +28,7 @@
                     @can('admin')
                     <li><a href="/admin/dashboard">店舗一覧</a></li>
                     <li><a href="/admin/shop_register">店舗登録</a></li>
+                    <li><a href="/admin/email">メール一斉送信</a></li>
                     @endcan
                     @can('owner')
                     <li><a href="/owner/dashboard">予約一覧</a></li>

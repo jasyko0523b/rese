@@ -54,9 +54,9 @@ Route::post('/', [ShopController::class, 'search']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 
 
-//Route::middleware('')->group(function () {
 Route::middleware('verified')->group(function () {
-    Route::get('/mypage', [AuthController::class, 'index']);
+    Route::get('redirects', [AuthController::class, 'index']);
+    Route::get('/mypage', [AuthController::class, 'myPage']);
     Route::put('/favorite', [AuthController::class, 'favorite']);
     Route::post('/review', [AuthController::class, 'review']);
 
