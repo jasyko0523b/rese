@@ -45,7 +45,17 @@ class ShopController extends Controller
     {
         $shop = Shop::where('id', $shop_id)->first();
         $reviews = Review::where('shop_id', $shop_id)->get()->reverse();
-        return view('shop_detail', compact('shop', 'reviews'));
+        $length = 0;
+        $sum = 0;
+        $ave = 0;
+        foreach($reviews as $review){
+            $sum = $sum + $review->rank;
+            $length++;
+        }
+        if($length > 0){
+            $ave = $sum / $length;
+        }
+        return view('shop_detail', compact('shop', 'reviews', 'ave'));
     }
 
 

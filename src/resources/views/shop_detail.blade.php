@@ -74,9 +74,9 @@
     <div class="reviews-top">
         <div class="reviews-average">
             <div class="reviews-average-value">
-                4.5
+                {{ $ave }}
             </div>
-            <div class="reviews-average-star" style="--rate: 4.5"></div>
+            <div class="reviews-average-star" style="--rate: {{ $ave }}"></div>
         </div>
         <div class="review__button-wrap">
             @if( !Auth::check() || !Auth::user()->hasVerifiedEmail() )
