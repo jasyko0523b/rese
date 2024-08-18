@@ -34,10 +34,12 @@ class AdminController extends Controller
         $register = [
             'name' => $request->shop_name,
             'email' => $request->email,
-            'password' => bcrypt('resePass001'),
+            'password' => bcrypt($request->password),
         ];
         $owner = User::create($register);
-        $owner->assignRole('owner');
+        $owner->assignRole('shop_admin');
+        $owner->sendEmailVerificationNotification();
+
         $shop = [
             'owner_id' => $owner->id,
             'name' => '新規店舗',

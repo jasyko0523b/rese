@@ -16,23 +16,6 @@ class MasterDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::factory()->create([
-            'name' => 'User',
-            'email' => 'user@sample.com',
-            'password' => bcrypt('user'),
-            'favorite' => [1, 2],
-        ]);
-        $admin = User::factory()->create([
-            'name' => '社員admin',
-            'email' => 'admin@sample.com',
-            'password' => bcrypt('admin'),
-        ]);
-        $owner = User::factory()->create([
-            'name' => '社員owner',
-            'email' => 'owner@sample.com',
-            'password' => bcrypt('owner'),
-        ]);
-
         $adminRole = Role::create(['name' => 'global_admin']);
         $shopAdminRole = Role::create(['name' => 'shop_admin']);
 
@@ -41,6 +24,20 @@ class MasterDatabaseSeeder extends Seeder
 
         $adminRole->givePermissionTo($adminPermission);
         $shopAdminRole->givePermissionTo($ownerPermission);
+
+        for ($i = 1; $i < 20; $i++) {
+            $owner = User::factory()->create([
+                'email' => 'owner' . $i . '@sample.com',
+                'password' => bcrypt('owner' . $i),
+            ]);
+            $owner->assignRole($shopAdminRole);
+        }
+
+        $admin = User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@sample.com',
+            'password' => bcrypt('admin'),
+        ]);
 
         $admin->assignRole($adminRole);
         $owner->assignRole($shopAdminRole);

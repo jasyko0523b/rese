@@ -102,7 +102,7 @@
     border-radius: 5px;
 }
 .input-field--sentence{
-    min-height: 4rem;
+    min-height: 10rem;
     resize: vertical;
 }
 

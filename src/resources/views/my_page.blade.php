@@ -51,6 +51,7 @@
                             <option value="17:00">17:00</option>
                             <option value="18:00">18:00</option>
                             <option value="19:00">19:00</option>
+                            <option value="20:00">20:00</option>
                         </select>
                     </div>
                     <div class="group-row">
@@ -59,6 +60,9 @@
                             <option value="1">1人</option>
                             <option value="2">2人</option>
                             <option value="3">3人</option>
+                            <option value="4">4人</option>
+                            <option value="5">5人</option>
+                            <option value="6">6人</option>
                         </select>
                     </div>
                     <button class="submit-button" type="submit">予約を修正する</button>

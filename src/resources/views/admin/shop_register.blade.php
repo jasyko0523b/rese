@@ -16,6 +16,9 @@
             <div class=" input-wrap email__wrap">
                 <input type="email" name="email" id="email" placeholder="Email">
             </div>
+            <div class=" input-wrap email__wrap">
+                <input type="text" name="password" id="password" placeholder="Password">
+            </div>
             <div class="submit-button__wrap">
                 <button class="submit-button" id="submit" type="submit">新規登録</button>
             </div>

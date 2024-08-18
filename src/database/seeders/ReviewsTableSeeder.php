@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Review;
 use App\Models\Shop;
 
-class ReviewsSeeder extends Seeder
+class ReviewsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

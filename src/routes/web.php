@@ -26,6 +26,9 @@ use PHPUnit\Framework\MockObject\Verifiable;
 
 /* メールをかくにんしてくださいのビュー */
 Route::get('/email/verify', function(){
+    if(!is_null(Auth::user()->email_verified_at)){
+        return redirect('redirects');
+    }
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
