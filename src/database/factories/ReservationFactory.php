@@ -18,7 +18,7 @@ class ReservationFactory extends Factory
         return [
             'shop_id' => Shop::inRandomOrder()->first()->id,
             'user_id' => User::inRandomOrder()->first()->id,
-            'date' => date('Y-m-d H:i:s', strtotime($this->faker->dateTimeBetween('1day', '+1 week')->format('Y-m-d') . ' ' . $this->faker->numberBetween(17, 20) . ':00')),
+            'date' => date('Y-m-d H:i:s', strtotime($this->faker->dateTimeBetween('-3 day', '+3  day')->format('Y-m-d') . ' ' . $this->faker->numberBetween(17, 20) . ':00')),
             'number' => $this->faker->numberBetween(1,6),
         ];
     }

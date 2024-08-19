@@ -1,7 +1,7 @@
 @extends('layouts.side')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/admin/shop_register.css') }}" />
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
             <div class=" input-wrap email__wrap">
                 <input type="email" name="email" id="email" placeholder="Email">
             </div>
-            <div class=" input-wrap email__wrap">
+            <div class=" input-wrap password__wrap">
                 <input type="text" name="password" id="password" placeholder="Password">
             </div>
             <div class="submit-button__wrap">

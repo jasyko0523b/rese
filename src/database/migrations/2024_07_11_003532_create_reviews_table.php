@@ -15,10 +15,8 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('shop_id')->nullable();
-            $table->foreign('shop_id')->references('id')->on('shops');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('shop_id')->constrained('shops');
+            $table->foreignId('user_id')->constrained('users');
             $table->integer('rank');
             $table->string('comment');
             $table->timestamp('created_at')->useCurrent()->nullable();

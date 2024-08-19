@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Shop;
 
 use App\Http\Requests\ReservationRequest;
+use DateTime;
 
 class ReservationController extends Controller
 {
@@ -15,17 +16,29 @@ class ReservationController extends Controller
     {
         $owner = $request->user();
         $shop_id = Shop::where('owner_id', $owner->id)->first()->id;
-        $reservations = Reservation::where('shop_id', $shop_id)->get();
-        $records = [];
+        $reservations = Reservation::where('shop_id', $shop_id)->oldest('date')->get();
+        $today = strtotime(now()->format('Y-m-d'));
+        $today_records = [];
+        $future_records = [];
+        $past_records = [];
         foreach ($reservations as $reserve) {
-            array_push($records, [
+            $record = [
                 'date' => date('Y/m/d', strtotime($reserve->date)),
                 'time' => date('H:i', strtotime($reserve->date)),
                 'number' => $reserve->number,
                 'user_name' => User::find($reserve->user_id)->name,
-            ]);
+            ];
+            $date= strtotime($record['date']);
+            if($today > $date){
+                array_push($past_records, $record);
+            }elseif($today == $date){
+                array_push($today_records, $record);
+            }else{
+                array_push($future_records, $record);
+            }
         }
-        return view('owner.dashboard', compact('records'));
+        array_multisort($past_records, SORT_DESC);
+        return view('owner.dashboard', compact('past_records', 'today_records', 'future_records'));
     }
 
 
@@ -53,5 +66,19 @@ class ReservationController extends Controller
             ]
         );
         return redirect('mypage');
+    }
+
+    public function info($reservation_id){
+        $reservation = Reservation::find($reservation_id);
+        $reservation_info = [
+                'id' => $reservation->id,
+                'shop_name' => Shop::where('id', $reservation->shop_id)->first()->name,
+                'date' => date('Y-m-d', strtotime($reservation->date)),
+                'time' => date('H:i', strtotime($reservation->date)),
+                'number' => $reservation->number,
+                'updated_at' => $reservation->updated_at,
+            ];
+
+        return view('info_reservation', compact('reservation_info'));
     }
 }

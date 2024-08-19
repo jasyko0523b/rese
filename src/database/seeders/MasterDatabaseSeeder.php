@@ -25,7 +25,7 @@ class MasterDatabaseSeeder extends Seeder
         $adminRole->givePermissionTo($adminPermission);
         $shopAdminRole->givePermissionTo($ownerPermission);
 
-        for ($i = 1; $i < 20; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             $owner = User::factory()->create([
                 'email' => 'owner' . $i . '@sample.com',
                 'password' => bcrypt('owner' . $i),

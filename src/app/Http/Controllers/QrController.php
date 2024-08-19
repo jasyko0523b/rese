@@ -23,7 +23,7 @@ class QrController extends Controller
             'url' => $url,
             'path' => $path,
         ];
-        return view('qr', $data);
+        return view('qr_reservation', $data);
     }
 
     public function download(Request $request){

@@ -9,10 +9,10 @@
     <div class="title">Login</div>
     <form class="login-form" action="/login" method="post">
         @csrf
-        <div class=" input-wrap email__wrap">
+        <div class="input-wrap email__wrap">
             <input type="email" name="email" id="email" placeholder="Email">
         </div>
-        <div class=" input-wrap password__wrap">
+        <div class="input-wrap password__wrap">
             <input type="password" name="password" id="password" placeholder="Password">
         </div>
         <div class="submit-button__wrap">

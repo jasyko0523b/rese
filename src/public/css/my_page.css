@@ -132,12 +132,41 @@
     text-align: left;
 }
 
-.edit-button {
+
+.qr-button {
     cursor: pointer;
     position: absolute;
     width: 42px;
     height: 42px;
     bottom: 0px;
+    right: 0px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50px;
+}
+
+.qr-button::before {
+    display: inline-block;
+    content: "";
+    width: 24px;
+    height: auto;
+    aspect-ratio: 1/1;
+    background-image: url(../img/qr.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+
+
+
+
+.edit-button {
+    cursor: pointer;
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    bottom: 47px;
     right: 0px;
     background: rgba(255, 255, 255, 0.2);
     border: none;

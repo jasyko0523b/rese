@@ -51,10 +51,8 @@
                     <button class="favorite-button is-active" type="submit" name="" id="">
                         @else
                         <button class="favorite-button" type="submit" name="" id="">
-                            @endif
-                            @else
-                            <button class="favorite-button" type="submit" name="" id="">
-                                @endif
+                        @endif
+                    @endif
                 </form>
             </div>
         </div>

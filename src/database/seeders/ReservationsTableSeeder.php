@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Reservation;
+use App\Models\Shop;
 
 class ReservationsTableSeeder extends Seeder
 {
@@ -14,6 +15,11 @@ class ReservationsTableSeeder extends Seeder
      */
     public function run()
     {
-        Reservation::factory(50)->create();
+        $shops = Shop::all();
+        foreach($shops as $shop){
+            Reservation::factory(10)->create([
+                'shop_id' => $shop->id,
+            ]);
+        }
     }
 }
