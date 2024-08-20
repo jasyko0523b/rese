@@ -1,18 +1,11 @@
 <?php
 
-//use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\OwnerController;
-
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
-//use Mockery\VerificationDirector;
-//use PHPUnit\Framework\MockObject\Verifiable;
-
-//use GuzzleHttp\Psr7\Request;
 
 /*
 |--------------------------------------------------------------------------

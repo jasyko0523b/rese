@@ -6,7 +6,8 @@
 }
 
 .owner-table-wrap{
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     padding: 5px;
     background-color: #fff;
     border-radius: 5px;
