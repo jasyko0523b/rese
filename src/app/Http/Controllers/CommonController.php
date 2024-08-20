@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Shop;
-use App\Models\Review;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Shop;
+use App\Models\Reservation;
+use App\Models\Review;
 
-class ShopController extends Controller
+
+class CommonController extends Controller
 {
     public function index()
     {
@@ -48,55 +49,29 @@ class ShopController extends Controller
         $length = 0;
         $sum = 0;
         $ave = 0;
-        foreach($reviews as $review){
+        foreach ($reviews as $review) {
             $sum = $sum + $review->rank;
             $length++;
         }
-        if($length > 0){
+        if ($length > 0) {
             $ave = $sum / $length;
         }
         return view('shop_detail', compact('shop', 'reviews', 'ave'));
     }
 
-
-    public function owner_detail(Request $request)
+    public function reservation_info($reservation_id)
     {
-        $user = $request->user();
-        $shop = Shop::where('owner_id', $user->id)->first();
-        return view('owner.shop_detail', compact('shop'));
-    }
-
-
-
-
-    public function text_update(Request $request)
-    {
-        $user = $request->user();
-        $shop = Shop::where('owner_id', $user->id)->first();
-
-        $new_shop = [
-            'name' => $request->name ?? $shop->name,
-            'area' => $request->area ?? $shop->area,
-            'genre' => $request->genre ?? $shop->genre,
-            'sentence' => $request->sentence ?? $shop->sentence,
+        $reservation = Reservation::find($reservation_id);
+        $reservation_info = [
+            'id' => $reservation->id,
+            'shop_name' => Shop::where('id', $reservation->shop_id)->first()->name,
+            'date' => date('Y-m-d', strtotime($reservation->date)),
+            'time' => date('H:i', strtotime($reservation->date)),
+            'number' => $reservation->number,
+            'updated_at' => $reservation->updated_at,
         ];
 
-        $shop->update($new_shop);
-        return redirect('owner/shop_detail');
+        return view('info_reservation', compact('reservation_info'));
     }
 
-    public function image_update(Request $request)
-    {
-        $user = $request->user();
-        $shop = Shop::where('owner_id', $user->id)->first();
-
-        $path = $request->file('shop_img')->store('shop_image', 'public');
-
-        $new_shop = [
-            'image_url' => Storage::url($path) ?? $shop->image_url,
-        ];
-
-        $shop->update($new_shop);
-        return redirect('owner/shop_detail');
-    }
 }

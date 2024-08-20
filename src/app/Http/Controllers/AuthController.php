@@ -7,6 +7,10 @@ use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReservationRequest;
+use DateTime;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
@@ -23,7 +27,6 @@ class AuthController extends Controller
             return redirect('/mypage');
         }
     }
-
 
     public function myPage(Request $request)
     {
@@ -79,4 +82,59 @@ class AuthController extends Controller
         Review::create($review);
         return redirect()->back();
     }
+
+    public function reserve(ReservationRequest $request)
+    {
+        $reservation = [
+            'shop_id' => $request->shop_id,
+            'user_id' => $request->user_id,
+            'date' => date('Y-m-d H:i:s', strtotime($request->date . ' ' . $request->time . ':00')),
+            'number' => $request->number
+        ];
+        Reservation::create($reservation);
+        return view('done');
+    }
+
+    public function update(Request $request)
+    {
+        $reservation = Reservation::find($request->id);
+        $reservation->update(
+            [
+                'date' =>
+                date('Y-m-d H:i:s', strtotime($request->date . ' ' . $request->time . ':00')),
+                'number' => $request->number,
+            ]
+        );
+        return redirect('mypage');
+    }
+
+    public function qr_index(Request $request)
+    {
+        $url = $request->input('url');
+
+        $path = null;
+        if (isset($url)) {
+            $path = 'qrcode.svg';
+            $qrCode = QrCode::generate($url);
+            Storage::put($path, $qrCode);
+        }
+
+        $data = [
+            'url' => $url,
+            'path' => $path,
+        ];
+        return view('qr_reservation', $data);
+    }
+
+    public function download(Request $request)
+    {
+        $path = $request->input('path');
+        $download = $request->boolean('download', false);
+
+        if ($download) {
+            return response()->download(Storage::path($path));
+        };
+        return response()->file(Storage::path($path));
+    }
+
 }
