@@ -6,41 +6,38 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Review;
-
+use Storage;
 
 class CommonController extends Controller
 {
-    public function index()
+    public function index(Request $request/*, $area = '東京都', $genre = '寿司', $text = '人'*/)
     {
-        $shops = Shop::all();
         $areas = Shop::groupBy('area')->get(['area']);
         $genres = Shop::groupBy('genre')->get(['genre']);
-        return view('shop_all', compact('shops', 'areas', 'genres'));
-    }
 
-    public function search(Request $request)
-    {
         if (empty($request->all())) {
             $shops = Shop::all();
         } else {
-            $area = $request->area;
-            $genre = $request->genre;
-            $name = $request->name;
+            $area = $request->area ?? '';
+            $genre = $request->genre ?? '';
+            $text = $request->text ?? '';
+
             $shops = Shop::when($area, function ($query, $area) {
                 return $query->where('area', $area);
             })->when($genre, function ($query, $genre) {
                 return $query->where('genre', $genre);
-            })->when($name, function ($query, $name) {
-                return $query->where('name', 'LIKE', '%' . $name . '%');
+            })->when($text, function ($query, $text) {
+                return $query->where('name', 'LIKE', '%' . $text . '%');
             })->get();
-        }
 
-        $areas = Shop::groupBy('area')->get(['area']);
-        $genres = Shop::groupBy('genre')->get(['genre']);
+            if($shops->isEmpty()){
+                $shops = Shop::all();
+                return view('shop_all', compact('shops', 'areas', 'genres'))->with('message', '条件に合う店舗が見つかりませんでした');
+            }
+        }
 
         return view('shop_all', compact('shops', 'areas', 'genres'));
     }
-
 
     public function detail($shop_id)
     {
@@ -70,8 +67,6 @@ class CommonController extends Controller
             'number' => $reservation->number,
             'updated_at' => $reservation->updated_at,
         ];
-
         return view('info_reservation', compact('reservation_info'));
     }
-
 }

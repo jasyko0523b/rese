@@ -39,7 +39,6 @@
                     <button class="edit-button"></button>
                     <form action="/reservation/qr" method="post">
                         @csrf
-                        <input type='hidden', name='id' value='{{ $reserve["id"] }}'>
                         <input type="hidden" name="url" value="{{ route('reservation_info', ['reservation_id' => $reserve['id'] ]) }}" />
                         <button class="qr-button" type="submit"></button>
                     </form>

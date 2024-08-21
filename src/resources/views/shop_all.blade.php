@@ -13,22 +13,30 @@
     <form action="/" method="post">
         @csrf
         <select name="area" id="">
-            <option value="">All area</option>
+            <option value="" @if(request()->input('area') == "" ) selected @endif>All area</option>
             @foreach ($areas as $area)
-            <option value="{{ $area->area }}">{{ $area->area }}</option>
+            <option value="{{ $area->area }}" @if( request()->input('area') == $area->area ) selected @endif>{{ $area->area }}</option>
             @endforeach
         </select>
         <select name="genre" id="">
-            <option value="" selected>All genre</option>
+            <option value="" @if(request()->input('genre') == "" ) selected @endif>All genre</option>
             @foreach( $genres as $genre )
-            <option value="{{ $genre->genre }}">{{ $genre->genre }}</option>
+            <option value="{{ $genre->genre }}" @if( request()->input('genre') == $genre->genre ) selected @endif >{{ $genre->genre }}</option>
             @endforeach
         </select>
         <div class="input-text-wrap">
-            <input type="text" name="searchbox" placeholder="Search...">
+            <input type="text" name="text" placeholder="Search..." value='{{ request()->input("text") }}'>
+        </div>
+        <div>
+            <button class="submit-button" type="submit">検索</button>
         </div>
     </form>
 </div>
+@isset($message)
+<div class="message-area">
+    <p>{{ $message }}</p>
+</div>
+@endisset
 <div class="shop-card-area">
     @foreach ($shops as $shop)
     @if($shop->name != '新規店舗')
@@ -51,8 +59,8 @@
                     <button class="favorite-button is-active" type="submit" name="" id="">
                         @else
                         <button class="favorite-button" type="submit" name="" id="">
-                        @endif
-                    @endif
+                            @endif
+                            @endif
                 </form>
             </div>
         </div>

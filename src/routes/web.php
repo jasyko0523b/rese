@@ -28,7 +28,7 @@ Route::group(['plefix' => 'email'], function(){
 
 
 Route::get('/', [CommonController::class, 'index']);
-Route::post('/', [CommonController::class, 'search']);
+Route::post('/', [CommonController::class, 'index']);
 Route::get('/detail/{shop_id}', [CommonController::class, 'detail']);
 Route::get('/reservation/{reservation_id}', [CommonController::class, 'reservation_info'])->name('reservation_info');
 
