@@ -8,7 +8,7 @@ laravel学習のために作成した。
 外部の飲食店予約サービスは手数料をとられるので自社サービスを持ちたい、というクライアントの要望を想定しています
 
 ## アプリケーションURL
-
+http://ec2-54-250-90-239.ap-northeast-1.compute.amazonaws.com
 
 ## 機能一覧
 - 登録店舗の一覧取得、検索(エリア、ジャンル、店名)
@@ -19,34 +19,60 @@ laravel学習のために作成した。
 - 権限別機能
     - 一般ユーザー
         - お気に入り店舗の一覧取得、追加、削除
-        - 入店予約の追加、変更、削除
+        - 入店予約の追加、変更、削除、QRコード作成
         - レビューの取得、登録
     - 店舗代表者
         - 店舗情報の作成、更新
         - 予約情報の確認
+        - Stripeを利用した決済
     - 管理者
-        - 店舗代表者の作成
+        - 店舗代表者の確認、作成
         - 利用者全員にお知らせメールの一斉送信
 
 ## ページ一覧
-画像貼る
+- 非会員でもアクセス可能
+	- 予約情報確認ページ
+	- 飲食店一覧ページ
+	- 飲食店詳細ページ
+	- 会員登録完了ページ
+	- ログインページ
+	- 会員登録ページ
+- 会員登録後アクセス可能
+	- マイページ
+	- Email確認ページ
+	- 予約確認QR表示ページ
+	- 予約完了ページ
+- Owner権限が必要
+	- 予約確認ページ
+	- 店舗詳細ページ
+	- 会計金額入力画面
+	- カード情報入力画面
+	- 決済完了画面
+- Admin権限が必要
+	- 店舗代表者一覧ページ
+	- 店舗代表者登録ページ
+	- メール作成ページ
 
 ## 使用技術(実行環境)
 - Laravel v8.83.27
-- PHP 7.4.9 (cli)
-- mysql  Ver 8.0.26 for Linux on x86_64
+- PHP 8.3.0 (cli)
+- mysql  Ver 15.1 Distrib 10.11.6-MariaDB
 - nginx version: nginx/1.21.1
 - Docker version 24.0.2
 - Composer version 2.7.7
 
 ## テーブル設計
 ### テーブル一覧
-Users/Shops/Reservations/Reviews
+- Usersテーブル
+- Shopsテーブル
+- Reservationsテーブル
+- Reviewsテーブル
 ### テーブル詳細
-画像はる
+![images/rese_table1.png](/images/rese_table1.png)
+![images/rese_table2.png](/images/rese_table2.png)
 
 ## ER図
-画像を貼る
+![images/rese_ER.png](/images/rese_ER.png)
 
 ## 環境構築
 ### Dockerを利用して、必要パッケージをインストールする
@@ -63,27 +89,15 @@ $ docker-compose exec php bash
 // PHP コンテナ内
 # composer install
 ```
+### src以下のアクセス権限を変更する
+```
+sudo chmod 777 -R src/*
+```
+
 ### .env ファイルを作成する
-`src`ディレクトリ内の`.env.example`をコピーして`.env`を作成します
+`src`ディレクトリ内の`.env.local`をコピーして`.env`を作成します
 ```
-$ cp src/.env.example src/.env
-```
-`.env`が作成出来たら、下記のように修正してください
-```
-// 前略
-
-DB_CONNECTION=mysql
-- DB_HOST=127.0.0.1
-+ DB_HOST=mysql
-DB_PORT=3306
-- DB_DATABASE=laravel
-- DB_USERNAME=root
-- DB_PASSWORD=
-+ DB_DATABASE=laravel_db
-+ DB_USERNAME=laravel_user
-+ DB_PASSWORD=laravel_pass
-
-// 後略
+$ cp src/.env.local src/.env
 ```
 ### キーを作成する
 phpコンテナにアクセスして、アプリケーションキーを生成してください
@@ -91,9 +105,25 @@ phpコンテナにアクセスして、アプリケーションキーを生成�
 // php コンテナ内
 # php artisan key:generate
 ```
+### マイグレーションとシーディングを実行する
+```
+// phpコンテナ内
+# php artisan migrate
+# php artisan db:seed
+```
 ブラウザより`127.0.0.0`にアクセスして動作を確認してください
-## 他に記載することがあれば記載する
 ## アカウントの種類（テストユーザーなど）
-user@sample.com/user
-owner@sample.com/owner
-admin@sample.com/admin
+テストユーザ一覧
+- 【一般利用者】
+    - email: user`{number}`@sample.com
+    - password: user`{number}`
+    - `{number}` には`1~19`の数字を入れてください
+    - 例： email: user1@sample.com / password:  user1
+- 【店舗代表者】
+    - email: owner`{number}`@sample.com
+    - password: owner`{number}`
+    - `{number}` には`1~19`の数字を入れてください
+    - 例： email: owner1@sample.com / password:  owner1
+- 【サイト管理者】
+    - email: admin@sample.com
+    - password: admin
