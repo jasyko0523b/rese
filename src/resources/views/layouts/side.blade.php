@@ -34,6 +34,7 @@
                     @can('owner')
                     <li><a href="/owner/dashboard">予約一覧</a></li>
                     <li><a href="/owner/shop_detail">店舗情報</a></li>
+                    <li><a href="/payment/amount">会計</a></li>
                     @endcan
                     <li>
                         <form action="/logout" method="post">

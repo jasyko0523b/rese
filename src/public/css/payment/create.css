@@ -1,0 +1,56 @@
+.payment-card {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    margin: auto;
+    width: 400px;
+    height: auto;
+    aspect-ratio: 1/1;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+}
+
+.card-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    background-color: #305DFF;
+    border-radius: 5px 5px 0 0;
+}
+
+.card-body{
+    margin-top: 10px;
+    width: 80%;
+}
+.form-control{
+    padding: 5px;
+    margin: 10px;
+    border: 1px rgba(0, 0, 0, 0.3) solid;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+.submit-button {
+    appearance: none;
+    padding: 5px 15px;
+    margin-top: 20px;
+    margin-left: 250px;
+    color: #fff;
+    background-color: #305DFF;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    vertical-align: middle;
+}
+.submit-button:hover{
+    cursor: pointer;
+    background-color: skyblue;
+    transition: .3s;
+}

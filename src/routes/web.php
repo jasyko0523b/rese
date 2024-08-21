@@ -6,6 +6,7 @@ use App\Http\Controllers\CommonController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ Route::group(['plefix' => 'email'], function(){
 
     Route::post('/verification-notification', [VerificationController::class, 'send_request'])->middleware(['auth', 'throttle:6.1'])->name('verification.send');
 });
+
+
+
 
 
 Route::get('/', [CommonController::class, 'index']);
@@ -53,6 +57,11 @@ Route::middleware('verified')->group(function () {
         Route::post('/image/update', [OwnerController::class, 'image_update']);
     });
 
+    Route::prefix('payment')->name('payment.')->group(function () {
+        Route::get('/amount', [PaymentController::class, 'amount'])->name('amount');
+        Route::post('/create', [PaymentController::class, 'create'])->name('create');
+        Route::post('/store', [PaymentController::class, 'store'])->name('store');
+    });
 
     Route::group(['prefix' => 'admin'], function (){
         Route::get('/dashboard', [AdminController::class, 'admin']);

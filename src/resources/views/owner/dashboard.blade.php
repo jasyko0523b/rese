@@ -30,7 +30,7 @@
             @endif
         </table>
         <h2>明日以降のご予約一覧</h2>
-        @if(empty($today_records))
+        @if(empty($future_records))
         <p>明日以降、ご予約はありません</p>
         @else
         <table class="reservations__table">
