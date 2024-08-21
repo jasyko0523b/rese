@@ -1,4 +1,4 @@
-PP_NAME=Rese
+APP_NAME=Rese
 APP_ENV=local
 APP_KEY=base64:5vBwJ9BmKcfrcuJxuRdVYsgJbAErfSA+0e3L4JXXb+M=
 APP_DEBUG=true
@@ -9,7 +9,7 @@ LOG_DEPRECATIONS_CHANNEL=null
 LOG_LEVEL=debug
 
 DB_CONNECTION=mysql
-DB_HOST=rese-db.c63tynmyp4ca.ap-northeast-1.rds.amazonaws.com
+#DB_HOST=rese-db.c63tynmyp4ca.ap-northeast-1.rds.amazonaws.com
 DB_PORT=3306
 DB_DATABASE=laravel_db
 DB_USERNAME=laravel_user
@@ -37,11 +37,11 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS="rese@example.com"
 MAIL_FROM_NAME="${APP_NAME}"
 
-AWS_ACCESS_KEY_ID=AKIA5QH77DHSBGUZJ4CG
-AWS_SECRET_ACCESS_KEY=YZA6yKcbbS/QrzbnkOi86Z/NkNDBUIIKCQmEdq1s
-AWS_DEFAULT_REGION=ap-northeast-1
-AWS_BUCKET=rese-storage-bucket
-AWS_USE_PATH_STYLE_ENDPOINT=false
+#AWS_ACCESS_KEY_ID=AKIA5QH77DHSBGUZJ4CG
+#AWS_SECRET_ACCESS_KEY=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
+#AWS_DEFAULT_REGION=ap-northeast-1
+#AWS_BUCKET=rese-storage-bucket
+#AWS_USE_PATH_STYLE_ENDPOINT=false
 
 PUSHER_APP_ID=
 PUSHER_APP_KEY=
