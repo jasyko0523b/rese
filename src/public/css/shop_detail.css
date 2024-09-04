@@ -4,7 +4,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .content-wrap{
+    .content-wrap {
         display: inline;
     }
 }
@@ -13,11 +13,13 @@
     width: 100%;
     padding: 20px;
 }
+
 @media screen and (max-width: 768px) {
-    .shop-details-area{
+    .shop-details-area {
         padding-top: 0;
     }
 }
+
 .back-button {
     cursor: pointer;
     padding: 0px;
@@ -30,6 +32,7 @@
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     vertical-align: middle;
 }
+
 .shop-name {
     display: inline-block;
     font-size: larger;
@@ -37,18 +40,20 @@
     margin-bottom: 20px;
     margin-left: 10px;
 }
+
 .shop-img {
     width: 100%;
 }
+
 .tag-area {
     margin: 20px 0px;
     display: flex;
     gap: 5px 5px;
 }
+
 .tag__item::before {
     content: "#";
 }
-
 
 .reservation-area {
     position: relative;
@@ -61,8 +66,9 @@
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
+
 @media screen and (max-width: 768px) {
-    .reservation-area{
+    .reservation-area {
         width: auto;
         margin: 0 20px;
         padding: 20px;
@@ -70,7 +76,7 @@
     }
 }
 
-.please-login-box{
+.please-login-box {
     position: absolute;
     display: flex;
     width: 95%;
@@ -85,17 +91,17 @@
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
-
-
 .reservation-area h2 {
     margin: 20px 0px;
 }
+
 @media screen and (max-width: 768px) {
-    .reservation-area h2{
+    .reservation-area h2 {
         margin: 0;
         margin-bottom: 10px;
     }
 }
+
 .reservation-area input,
 .reservation-area select {
     border: none;
@@ -104,12 +110,18 @@
     margin-bottom: 10px;
     border-radius: 5px;
 }
+
+#date::-webkit-calendar-picker-indicator {
+    padding: 1rem;
+}
+
 .confirmation__table-wrap {
     margin: auto;
     padding: 20px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
 }
+
 .confirmation__table {
     width: 100%;
     color: #fff;
@@ -144,6 +156,7 @@
     border-radius: 5px;
     box-shadow: inset 2px 3px rgba(0, 0, 0, 0.3);
 }
+
 .reviews-top-title {
     margin: auto;
 }
@@ -153,20 +166,24 @@
     justify-content: space-between;
     align-items: end;
 }
+
 .reviews-average {
     display: flex;
     font-weight: bold;
     align-items: center;
 }
-@media screen and (max-width: 768px){
+
+@media screen and (max-width: 768px) {
     .reviews-average {
         display: inline;
     }
 }
+
 .reviews-average-value {
     font-size: 3rem;
     margin-right: 10px;
 }
+
 .reviews-average-star {
     position: relative;
     display: inline-block;
@@ -174,11 +191,13 @@
     width: 180px;
     height: 54px;
 }
-@media screen and (max-width: 768px){
-    .reviews-average-star{
+
+@media screen and (max-width: 768px) {
+    .reviews-average-star {
         font-size: 2rem;
     }
 }
+
 .reviews-average-star::before {
     position: absolute;
     content: "★★★★★";
@@ -186,6 +205,7 @@
     left: 0px;
     color: #c4c4c4;
 }
+
 .reviews-average-star::after {
     position: absolute;
     content: "★★★★★";
@@ -197,6 +217,7 @@
     overflow: hidden;
     white-space: nowrap;
 }
+
 .review__button {
     appearance: none;
     cursor: pointer;
@@ -207,15 +228,17 @@
     background-color: #eee;
     box-shadow: 2px 3px rgba(0, 0, 0, 0.3);
 }
-.review__button.active{
+
+.review__button.active {
     color: #fff;
     background-color: #305dff;
 }
 
-.review-list{
+.review-list {
     display: none;
 }
-.review-list.active{
+
+.review-list.active {
     display: inline;
 }
 
@@ -231,14 +254,17 @@
     display: flex;
     justify-content: space-between;
 }
+
 .review__header--left {
     flex: 4;
     display: flex;
 }
-.review__header--right{
+
+.review__header--right {
     flex: 2;
     text-align: end;
 }
+
 .review__header-rank {
     display: flex;
     gap: 10px;
@@ -251,6 +277,7 @@
     font-size: 16px;
     min-width: 5rem;
 }
+
 .review__header-star::before {
     position: absolute;
     content: "★★★★★";
@@ -258,6 +285,7 @@
     left: 0px;
     color: #c4c4c4;
 }
+
 .review__header-star::after {
     position: absolute;
     content: "★★★★★";
@@ -269,24 +297,25 @@
     overflow: hidden;
     white-space: nowrap;
 }
-.review__header-value{
+
+.review__header-value {
     flex: 1;
 }
-
 
 .write-area {
     display: none;
 }
+
 .write-area.active {
     display: inline;
 }
+
 .write-form {
     margin-bottom: 20px;
     padding: 20px;
     background-color: #eee;
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-
 }
 
 .star {
@@ -297,26 +326,32 @@
     mask-repeat: no-repeat;
     mask-size: contain;
 }
+
 .star:checked {
     background-color: #feca2f;
 }
+
 .rating-star > .star:not(:checked) {
     background-color: #feca2f;
 }
+
 .star:checked ~ .star {
     background-color: #c4c4c4;
 }
+
 .group-row {
     display: flex;
     box-sizing: border-box;
     margin-bottom: 10px;
 }
+
 .group-row label,
 .form-label {
     text-align: left;
     flex: 0 0 20%;
     max-width: 20%;
 }
+
 .group-row textarea {
     flex: 0 0 80%;
     max-width: 80%;

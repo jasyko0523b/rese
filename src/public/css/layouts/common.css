@@ -2,6 +2,7 @@ body {
     position: relative;
     background-color: #eee;
 }
+
 header {
     padding: 20px;
 }
@@ -31,6 +32,7 @@ header {
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
+
 .menu:hover {
     cursor: pointer;
 }
@@ -48,10 +50,12 @@ header {
     width: 30%;
     top: -20%;
 }
+
 .menu span:nth-of-type(2) {
     width: 50%;
     top: 0px;
 }
+
 .menu span:nth-of-type(3) {
     width: 20%;
     top: 20%;
@@ -62,12 +66,15 @@ header {
     top: 0;
     left: 50%;
 }
+
 .menu.is-active span:nth-of-type(1) {
     transform: translateX(-50%) rotate(-45deg);
 }
+
 .menu.is-active span:nth-of-type(2) {
     display: none;
 }
+
 .menu.is-active span:nth-of-type(3) {
     transform: translateX(-50%) rotate(45deg);
 }
@@ -86,17 +93,21 @@ header {
     z-index: 5;
     background-color: #fff;
 }
+
 .nav-list {
     display: flex;
     flex-flow: column;
     margin: 200px auto;
 }
+
 .nav-item {
     margin: 10px auto;
 }
+
 .nav-item.auth {
     display: none;
 }
+
 .nav-item a, .nav-item button {
     font-weight: 400;
     appearance: none;

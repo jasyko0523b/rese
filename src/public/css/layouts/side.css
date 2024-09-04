@@ -26,6 +26,7 @@ aside {
     color: #d6d8d9;
     background-color: #343a40;
 }
+
 @media screen and (max-width: 768px) {
     aside{
         position: fixed;
@@ -39,11 +40,13 @@ aside {
     padding: 10px 20px;
     border-bottom: 1px solid #d6d8d9;
 }
+
 @media screen and (max-width: 768px) {
     .side-content{
         border-bottom: none;
     }
 }
+
 .site-title {
     margin: 0;
     color: #d6d8d9;
@@ -70,10 +73,10 @@ textarea {
     font-optical-sizing: auto;
 }
 
-
 .menu-button{
     display: none;
 }
+
 @media screen and (max-width: 768px) {
     .menu-button{
         position: absolute;
@@ -85,12 +88,15 @@ textarea {
         color: #d6d8d9;
         border: none;
         }
+
     .menu-button:hover{
         cursor: pointer;
     }
+
     .menu-button.is-active{
         color: transparent;
     }
+
     .menu-button.is-active::before{
         position: absolute;
         content: '×';
@@ -102,26 +108,27 @@ textarea {
     .menu-wrapper{
         display: none;
     }
+
     .menu-wrapper.is-active{
         display: inline-block;
     }
-
 }
 
 .menu-wrapper ul {
     padding: 0px 20px;
 }
 
-
 .menu-wrapper li {
     list-style: none;
     margin: 15px 0px;
 }
+
 .menu-wrapper a {
     cursor: pointer;
     text-decoration: none;
     color: #d6d8d9;
 }
+
 .menu-wrapper button {
     cursor: pointer;
     appearance: none;

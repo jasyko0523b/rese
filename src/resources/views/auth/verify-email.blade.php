@@ -27,6 +27,3 @@
 </div>
 @endif
 @endsection
-@section('js')
-
-@endsection

@@ -15,13 +15,13 @@
         <select name="area" id="">
             <option value="" @if(request()->input('area') == "" ) selected @endif>All area</option>
             @foreach ($areas as $area)
-            <option value="{{ $area->area }}" @if( request()->input('area') == $area->area ) selected @endif>{{ $area->area }}</option>
+            <option value="{{ $area->id }}" @if( request()->input('area') == $area->id ) selected @endif>{{ $area->name }}</option>
             @endforeach
         </select>
         <select name="genre" id="">
             <option value="" @if(request()->input('genre') == "" ) selected @endif>All genre</option>
             @foreach( $genres as $genre )
-            <option value="{{ $genre->genre }}" @if( request()->input('genre') == $genre->genre ) selected @endif >{{ $genre->genre }}</option>
+            <option value="{{ $genre->id }}" @if( request()->input('genre') == $genre->id ) selected @endif >{{ $genre->name }}</option>
             @endforeach
         </select>
         <div class="input-text-wrap">
@@ -45,8 +45,8 @@
         <div class="card-text">
             <h3 class="card-title">{{ $shop->name }}</h3>
             <div class="tag-area">
-                <div class="tag-item">{{ $shop->area }}</div>
-                <div class="tag-item">{{ $shop->genre }}</div>
+                <div class="tag-item">{{ $shop->area->name }}</div>
+                <div class="tag-item">{{ $shop->genre->name }}</div>
             </div>
             <div class="card-footer">
                 <button class="details-button" onclick="location.href='/detail/{{ $shop->id }}'">詳しく見る</button>
@@ -56,11 +56,11 @@
                     <input type="hidden" name="shop_id" value="{{ $shop->id }}" />
                     @if(Auth::check())
                     @if( in_array($shop->id, Auth::user()->favorite) )
-                    <button class="favorite-button is-active" type="submit" name="" id="">
-                        @else
+                        <button class="favorite-button is-active" type="submit" name="" id="">
+                    @else
                         <button class="favorite-button" type="submit" name="" id="">
-                            @endif
-                            @endif
+                    @endif
+                    @endif
                 </form>
             </div>
         </div>

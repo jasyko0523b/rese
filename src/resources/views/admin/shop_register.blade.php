@@ -26,11 +26,3 @@
     </div>
 </div>
 @endsection
-
-@section('aside')
-<ul>
-    <li><a href="/admin/dashboard">店舗一覧</a></li>
-    <li><a href="/admin/shop_register">店舗登録</a></li>
-    <li><a href="/">ログアウト</a></li>
-</ul>
-@endsection

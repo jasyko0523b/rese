@@ -11,23 +11,23 @@
         <table class="reservation__table">
             <tr>
                 <th>Shop</th>
-                <td>{{$reservation_info['shop_name']}}</td>
+                <td>{{$reservation->shop->name}}</td>
             </tr>
             <tr>
                 <th>Date</th>
-                <td class="date">{{$reservation_info['date']}}</td>
+                <td class="date">{{$reservation->getDateString()}}</td>
             </tr>
             <tr>
                 <th>Time</th>
-                <td class="time">{{$reservation_info['time']}}</td>
+                <td class="time">{{$reservation->getTimeString()}}</td>
             </tr>
             <tr>
                 <th>Number</th>
-                <td class="number">{{$reservation_info['number']}}人</td>
+                <td class="number">{{$reservation->number}}人</td>
             </tr>
             <tr>
                 <th>Update</th>
-                <td class="update">{{$reservation_info['updated_at']}}</td>
+                <td class="update">{{$reservation->updated_at}}</td>
             </tr>
         </table>
     </div>

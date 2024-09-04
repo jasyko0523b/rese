@@ -146,10 +146,15 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'date_time' => '日時',
+    ],
     'values' => [
         'date' => [
             'today' => '今日',
+        ],
+        'date_time' =>[
+            'now' => '現在時刻',
         ],
     ],
 ];

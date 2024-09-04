@@ -11,10 +11,12 @@
     align-items: center;
     justify-content: center;
 }
+
 form{
     padding: 10px;
     text-align: center;
 }
+
 input{
     appearance: none;
     -webkit-appearance: none;
@@ -36,6 +38,7 @@ input{
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     vertical-align: middle;
 }
+
 .submit-button:hover{
     cursor: pointer;
     background-color: skyblue;

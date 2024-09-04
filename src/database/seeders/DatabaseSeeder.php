@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-//use App\Models\User;
-
-use App\Models\Reservation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(MasterDatabaseSeeder::class);
+        $this->call(AreasTableSeeder::class);
+        $this->call(GenresTableSeeder::class);
         $this->call(ShopsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(ReviewsTableSeeder::class);

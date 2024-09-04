@@ -11,12 +11,12 @@
         <div class="shop-name">{{ $shop->name }}</div>
         <img class="shop-img" src="{{ $shop->image_url }}">
         <div class="tag-area">
-            <div class="tag__item">{{ $shop->area }}</div>
-            <div class="tag__item">{{ $shop->genre }}</div>
+            <div class="tag__item">{{ $shop->area->name }}</div>
+            <div class="tag__item">{{ $shop->genre->name }}</div>
         </div>
         <div class="sentence">{{ $shop->sentence }}</div>
     </div>
-    <form class="reservation-area" action="/reserve" method="post">
+    <form class="reservation-area" action="/reservation/create" method="post">
         @csrf
         <h2>予約</h2>
         @if( !Auth::check() || !Auth::user()->hasVerifiedEmail() )
@@ -25,7 +25,7 @@
         </div>
         @endif
         <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-        <input type="date" name="date" id="date"><br>
+        <input type="date" name="date" id="date" value="{{ date('Y-m-d') }}"><br>
         <select name="time" id="time">
             <option value="17:00">17:00</option>
             <option value="18:00">18:00</option>
@@ -142,38 +142,7 @@
 @endsection
 
 @section('js')
-<script>
-    document.getElementById('date').addEventListener('change', function() {
-        document.getElementById('date_view').textContent = this.value;
-    });
-    document.getElementById('time').addEventListener('change', function() {
-        document.getElementById('time_view').textContent = this.value;
-    });
-    document.getElementById('number').addEventListener('change', function() {
-        document.getElementById('number_view').textContent = this.value + '人';
-    });
-    document.getElementById('date').value = new Date().toLocaleDateString('sv-SE');
-
-
-    var stars = document.querySelectorAll('.star');
-    var selectedRank = document.querySelector('.selected-rank');
-    stars.forEach((star) => {
-        star.addEventListener('click', () => {
-            selectedRank.textContent = '( ' + star.value + '.0 )';
-        });
-    });
-    stars[2].click();
-
-
-
-    var writeArea = document.querySelector('.write-area');
-    var reviewList = document.querySelector('.review-list');
-    var reviewButton = document.querySelector('.review__button');
-    reviewButton.addEventListener('click', () => {
-        reviewButton.classList.toggle('active');
-        writeArea.classList.toggle('active');
-        reviewList.classList.toggle('active');
-    });
-</script>
-
+<script type="text/javascript" src="{{ asset('js/reservationInfoTable.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/reviewButton.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/reviewStar.js') }}"></script>
 @endsection

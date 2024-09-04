@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     gap: 30px 15px;
 }
+
 @media screen and (max-width: 768px) {
     .shop-card-area{
         gap: 3vw 2vw;
@@ -15,12 +16,12 @@
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
+
 @media screen and (max-width: 768px) {
     .shop-card{
         width: 45vw;
     }
 }
-
 
 .card-img {
     width: 100%;
@@ -38,6 +39,7 @@
     font-size: small;
     margin-right: 5px;
 }
+
 .tag-item::before{
     content: '#';
 }
@@ -45,6 +47,7 @@
 .card-text{
     padding: 20px;
 }
+
 @media screen and (max-width: 768px) {
     .card-text{
         padding: 10px;
@@ -54,11 +57,13 @@
 .card-title{
     margin: 0px;
 }
+
 .card-footer{
     display: flex;
     margin-top: 15px;
     justify-content: space-between;
 }
+
 .details-button{
     cursor: pointer;
     appearance: none;

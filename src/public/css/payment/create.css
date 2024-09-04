@@ -29,6 +29,7 @@
     margin-top: 10px;
     width: 80%;
 }
+
 .form-control{
     padding: 5px;
     margin: 10px;
@@ -49,6 +50,7 @@
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     vertical-align: middle;
 }
+
 .submit-button:hover{
     cursor: pointer;
     background-color: skyblue;

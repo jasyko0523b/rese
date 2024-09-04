@@ -21,14 +21,14 @@
                         <div class="shop-name">{{ $shop->name }}</div>
                         <img class="shop-img" src="{{ $shop->image_url }}">
                         <div class="tag-area">
-                            <div class="tag__item">{{ $shop->area }}</div>
-                            <div class="tag__item">{{ $shop->genre }}</div>
+                            <div class="tag__item">{{ $shop->area->name }}</div>
+                            <div class="tag__item">{{ $shop->genre->name }}</div>
                         </div>
                         <div class="sentence">{{ $shop->sentence }}</div>
                     </div>
                 </div>
                 <div class="tab-pane" id="edit">
-                    <form class="edit-area" action="/owner/text/update" method="post">
+                    <form class="edit-area" action="/owner/shop_detail/update/text" method="post">
                         @csrf
                         <input type="hidden" name="shop_id" value="1">
                         <div class="group-row">
@@ -37,11 +37,19 @@
                         </div>
                         <div class="group-row">
                             <label for="area" class="form-label">エリア</label>
-                            <input class="input-field" type="text" name="area" id="area" value="{{ $shop->area }}">
+                            <select class="input-field" name="area" id="">
+                                @foreach ($areas as $area)
+                                <option value="{{ $area->id }}" @if( $shop->area->id == $area->id ) selected @endif>{{ $area->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="group-row">
                             <label for="genre" class="form-label">ジャンル</label>
-                            <input class="input-field" type="text" name="genre" id="genre" value="{{ $shop->genre }}">
+                            <select class="input-field" name="genre" id="">
+                                @foreach( $genres as $genre )
+                                <option value="{{ $genre->id }}" @if( $shop->genre->id == $genre->id ) selected @endif >{{ $genre->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="group-row">
                             <label for="sentence" class="form-label">説明文</label>
@@ -53,7 +61,7 @@
                     </form>
                 </div>
                 <div class="tab-pane" id="image">
-                    <form class="edit-area" action="/owner/image/update" method="post" enctype="multipart/form-data">
+                    <form class="edit-area" action="/owner/shop_detail/update/image" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="group-row">
                             <label for="shop_img" class="form-label">画像</label>
@@ -78,43 +86,5 @@
 @endsection
 
 @section('js')
-<script>
-    /* タブ切替 */
-    var tabs = document.querySelectorAll('.tab-link');
-    var pages = document.querySelectorAll('.tab-pane');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            /* タグ部分の見た目の切り替え */
-            if (!tab.classList.contains('active')) {
-                tabs.forEach(ele => {
-                    ele.classList.remove('active');
-                });
-                tab.classList.toggle('active');
-            }
-
-            var targetId = tab.href.substring(tab.href.indexOf('#') + 1, tab.href.length);
-
-            pages.forEach(page => {
-                if (page.id != targetId) {
-                    page.classList.remove('active');
-                } else {
-                    page.classList.add('active');
-                }
-            });
-
-        });
-    });
-    tabs[0].click();
-
-
-
-    /* 画像のプレビュー */
-    var previewArea = document.querySelector('#preview-image');
-    var imageInput = document.querySelector('.input-field--image');
-
-    imageInput.addEventListener('change', (ele) => {
-        previewArea.setAttribute('src', URL.createObjectURL(ele.target.files[0]));
-    });
-</script>
+<script type="text/javascript" src="{{ asset('js/tabView.js') }}"></script>
 @endsection

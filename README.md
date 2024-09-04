@@ -95,9 +95,9 @@ sudo chmod 777 -R src/*
 ```
 
 ### .env ファイルを作成する
-`src`ディレクトリ内の`.env.local`をコピーして`.env`を作成します
+`src`ディレクトリ内の`.env.development`をコピーして`.env`を作成します
 ```
-$ cp src/.env.local src/.env
+$ cp src/.env.development src/.env
 ```
 ### キーを作成する
 phpコンテナにアクセスして、アプリケーションキーを生成してください

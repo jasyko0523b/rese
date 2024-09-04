@@ -12,6 +12,7 @@
     padding: .5rem;
     border-bottom: #EEE 1px solid;
 }
+
 .card-header ul{
     display: flex;
     flex-wrap: wrap;
@@ -19,6 +20,7 @@
     margin: 0;
     list-style: none;
 }
+
 .tab-link{
     display: block;
     padding: .5rem 1rem;
@@ -27,6 +29,7 @@
     background-color: transparent;
     text-decoration: none;
 }
+
 .tab-link.active{
     color: #305dff;
     background-color: rgba(48, 93, 255, 0.2);
@@ -35,10 +38,10 @@
 .tab-pane{
     display: none;
 }
+
 .tab-pane.active{
     display: block;
 }
-
 
 .edit-area{
     padding: 20px;
@@ -49,11 +52,12 @@
     box-sizing: border-box;
     margin-bottom: 10px;
 }
+
 .group-row label{
-/*    text-align: left;*/
     flex: 0 0 20%;
     max-width: 20%;
 }
+
 .input-field{
     flex: 0 0 80%;
     max-width: 80%;
@@ -61,10 +65,12 @@
     border: 1px solid #ced4da;
     border-radius: 5px;
 }
+
 .input-field--textarea{
     min-height: 20rem;
     resize: vertical;
 }
+
 .align-right{
     text-align: right;
 }

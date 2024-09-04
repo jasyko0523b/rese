@@ -48,4 +48,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'favorite' => 'array'
     ];
 
+    public function shop()
+    {
+        return $this->hasOne(Shop::class, 'owner_id');
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

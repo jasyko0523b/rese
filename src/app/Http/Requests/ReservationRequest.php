@@ -26,9 +26,17 @@ class ReservationRequest extends FormRequest
         return [
             'shop_id' => 'exists:shops,id|required|integer',
             'user_id' => 'exists:users,id|required|integer',
-            'date' => 'required|date|after:today',
+            'date' => 'required|date',
             'time' => 'required|string',
+            'date_time' => 'date|after:now',
             'number' => 'required|integer|min:1|max:9',
         ];
+    }
+
+    public function prepareForValidation(){
+        $date_time = ($this->filled(['date', 'time'])) ? $this->date . ' '. $this->time : '';
+        $this->merge([
+            'date_time' => $date_time,
+        ]);
     }
 }

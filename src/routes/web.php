@@ -1,12 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\VerificationController;
-use App\Http\Controllers\CommonController;
-use App\Http\Controllers\OwnerController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\QrController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,30 +36,31 @@ Route::group(['plefix' => 'email'], function(){
 
 
 
-Route::get('/', [CommonController::class, 'index']);
-Route::post('/', [CommonController::class, 'index']);
-Route::get('/detail/{shop_id}', [CommonController::class, 'detail']);
-Route::get('/reservation/{reservation_id}', [CommonController::class, 'reservation_info'])->name('reservation_info');
+Route::get('/', [ShopController::class, 'index']);
+Route::post('/', [ShopController::class, 'index']);
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+Route::get('/reservation/{reservation_id}', [QrController::class, 'reservation_info'])->name('reservation_info');
 
 
 Route::middleware('verified')->group(function () {
-    Route::get('redirects', [AuthController::class, 'index']);
-    Route::get('/mypage', [AuthController::class, 'myPage']);
-    Route::put('/favorite', [AuthController::class, 'favorite']);
-    Route::post('/review', [AuthController::class, 'review']);
+    Route::get('redirects', [RedirectController::class, 'index']);
+    Route::put('/favorite', [FavoriteController::class, 'favorite']);
+    Route::post('/review', [ReviewController::class, 'review']);
 
-    Route::post('/reserve', [AuthController::class, 'reserve']);
-    Route::post('/reserve/update', [AuthController::class, 'update']);
+    Route::get('/mypage', [ReservationController::class, 'myPage']);
 
-    Route::post('/reservation/qr', [AuthController::class, 'qr_index'])->name('qr');
-    Route::get('/reservation/qr/download', [AuthController::class, 'download'])->name('qr.download');
+    Route::post('/reservation/create', [ReservationController::class, 'create']);
+    Route::post('/reservation/update', [ReservationController::class, 'update']);
+    Route::post('/reservation/delete', [ReservationController::class, 'delete']);
+    Route::post('/reservation/qr', [QrController::class, 'qr_index'])->name('qr');
+    Route::get('/reservation/qr/download', [QrController::class, 'download'])->name('qr.download');
 
 
     Route::group(['prefix' => 'owner'], function (){
-        Route::get('/dashboard', [OwnerController::class, 'index']);
-        Route::get('/shop_detail', [OwnerController::class, 'owner_detail']);
-        Route::post('/text/update', [OwnerController::class, 'text_update']);
-        Route::post('/image/update', [OwnerController::class, 'image_update']);
+        Route::get('/dashboard', [ReservationController::class, 'index']);
+        Route::get('/shop_detail', [ShopController::class, 'owner_detail']);
+        Route::post('/shop_detail/update/text', [ShopController::class, 'update_text']);
+        Route::post('/shop_detail/update/image', [ShopController::class, 'update_image']);
     });
 
     Route::prefix('payment')->name('payment.')->group(function () {
@@ -64,10 +70,10 @@ Route::middleware('verified')->group(function () {
     });
 
     Route::group(['prefix' => 'admin'], function (){
-        Route::get('/dashboard', [AdminController::class, 'admin']);
-        Route::get('/shop_register', [AdminController::class, 'register']);
-        Route::post('/add', [AdminController::class, 'create']);
-        Route::get('/email', [AdminController::class, 'email_writing']);
-        Route::post('/email/send_all', [AdminController::class, 'send_all']);
+        Route::get('/dashboard', [ShopController::class, 'admin']);
+        Route::get('/shop_register', [ShopController::class, 'register']);
+        Route::post('/add', [ShopController::class, 'create']);
+        Route::get('/email', [MailController::class, 'email_writing']);
+        Route::post('/email/send_all', [MailController::class, 'send_all']);
     });
 });
