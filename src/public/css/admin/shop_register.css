@@ -1,4 +1,4 @@
-.main-wrap{
+.main-wrap {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -17,68 +17,44 @@
 .title {
     padding: 15px;
     color: #fff;
-    background-color: #FFC107;
+    background-color: #ffc107;
     border-radius: 5px 5px 0 0;
 }
 
 .add-owner-form {
+    padding: 20px;
+}
+
+.group-row {
     display: flex;
-    flex-flow: column;
-    padding: 15px;
-    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
-.add-owner-form input{
-    appearance: none;
-    margin: 5px;
-    height: 24px;
-    width: 90%;
-    border: none;
-    border-bottom: 1px solid black;
+.group-row label {
+    text-align: left;
+    flex: 0 0 30%;
+    max-width: 30%;
 }
 
-.input-wrap{
-    width: 100%;
-    margin: 15px;
+.input-field {
+    flex: 0 0 70%;
+    max-width: 70%;
+    height: calc(2.25rem);
+    border: 1px solid #ced4da;
+    border-radius: 5px;
 }
 
-.input-wrap::before{
-    display: inline-block;
-    content: "";
-    width: 18px;
-    height: auto;
-    aspect-ratio: 1/1;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    vertical-align: middle;
-}
-
-.input-wrap.store-name__wrap::before {
-    background-image: url(../../img/shop.svg);
-}
-
-.input-wrap.email__wrap::before {
-    background-image: url(../../img/email.svg);
-}
-
-.input-wrap.password__wrap::before {
-    background-image: url(../../img/lock.svg);
-}
-
-.submit-button__wrap{
-    width: 100%;
+.align-right {
     text-align: right;
-    margin: 20px;
-    padding-right: 5%;
 }
 
-.submit-button{
+.submit-button {
     cursor: pointer;
-    padding: 5px 15px;
+    appearance: none;
+    padding: 0.5rem 1rem;
     color: #fff;
-    background-color: #FFC107;
+    background-color: #0538ff;
     border: none;
-    border-radius: 3px;
-    text-align: end;
+    border-radius: 5px;
 }

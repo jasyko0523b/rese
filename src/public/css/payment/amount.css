@@ -12,15 +12,15 @@
     justify-content: center;
 }
 
-form{
+form {
     padding: 10px;
     text-align: center;
 }
 
-input{
+input {
     appearance: none;
     -webkit-appearance: none;
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
     width: 80%;
     font-size: 3rem;
     margin: 30px;
@@ -32,15 +32,15 @@ input{
     appearance: none;
     padding: 5px 15px;
     color: #fff;
-    background-color: #305DFF;
+    background-color: #305dff;
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     vertical-align: middle;
 }
 
-.submit-button:hover{
+.submit-button:hover {
     cursor: pointer;
     background-color: skyblue;
-    transition: .3s;
+    transition: 0.3s;
 }

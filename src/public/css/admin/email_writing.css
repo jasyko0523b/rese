@@ -2,18 +2,18 @@
     padding: 0px 20px;
 }
 
-.card{
+.card {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
-.card-header{
-    padding: .5rem;
-    border-bottom: #EEE 1px solid;
+.card-header {
+    padding: 0.5rem;
+    border-bottom: #eee 1px solid;
 }
 
-.card-header ul{
+.card-header ul {
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
@@ -21,44 +21,44 @@
     list-style: none;
 }
 
-.tab-link{
+.tab-link {
     display: block;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
-    color: #7F7F7F;
+    color: #7f7f7f;
     background-color: transparent;
     text-decoration: none;
 }
 
-.tab-link.active{
+.tab-link.active {
     color: #305dff;
     background-color: rgba(48, 93, 255, 0.2);
 }
 
-.tab-pane{
+.tab-pane {
     display: none;
 }
 
-.tab-pane.active{
+.tab-pane.active {
     display: block;
 }
 
-.edit-area{
+.edit-area {
     padding: 20px;
 }
 
-.group-row{
+.group-row {
     display: flex;
     box-sizing: border-box;
     margin-bottom: 10px;
 }
 
-.group-row label{
+.group-row label {
     flex: 0 0 20%;
     max-width: 20%;
 }
 
-.input-field{
+.input-field {
     flex: 0 0 80%;
     max-width: 80%;
     height: calc(2.25rem);
@@ -66,19 +66,19 @@
     border-radius: 5px;
 }
 
-.input-field--textarea{
+.input-field--textarea {
     min-height: 20rem;
     resize: vertical;
 }
 
-.align-right{
+.align-right {
     text-align: right;
 }
 
 .submit-button {
     cursor: pointer;
     appearance: none;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     color: #fff;
     background-color: #0538ff;
     border: none;

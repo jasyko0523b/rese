@@ -45,6 +45,12 @@
     width: 100%;
 }
 
+.no-image {
+    width: 100%;
+    padding: 10px;
+    border: 1px dashed black;
+}
+
 .tag-area {
     margin: 20px 0px;
     display: flex;
@@ -180,8 +186,19 @@
 }
 
 .reviews-average-value {
+    display: flex;
+    align-items: baseline;
     font-size: 3rem;
     margin-right: 10px;
+}
+
+.reviews-average--no-review {
+    font-weight: normal;
+}
+
+.reviews-count {
+    margin: 5px;
+    font-size: 1rem;
 }
 
 .reviews-average-star {

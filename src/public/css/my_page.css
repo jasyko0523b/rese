@@ -3,7 +3,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .username{
+    .username {
         margin: 0;
     }
 }
@@ -15,11 +15,10 @@
 }
 
 @media screen and (max-width: 768px) {
-    .flexbox{
+    .flexbox {
         display: inline;
     }
 }
-
 
 .reservation-container {
     flex: 2;
@@ -42,11 +41,15 @@
 }
 
 @media screen and (max-width: 768px) {
-    .reservation-card-area{
+    .reservation-card-area {
         gap: 15px;
     }
 }
 
+.reservation__error {
+    border: 2px solid red;
+    padding: 5px;
+}
 
 .reservation-card {
     position: relative;
@@ -58,7 +61,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .reservation-card{
+    .reservation-card {
         width: 100%;
         max-width: 350px;
         padding: 20px;
@@ -242,6 +245,10 @@
     height: calc(2.25rem);
     border: 1px solid #ced4da;
     border-radius: 5px;
+}
+
+#date::-webkit-calendar-picker-indicator {
+    padding: 1rem;
 }
 
 .submit-button {

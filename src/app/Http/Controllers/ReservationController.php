@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
-    // get Reservation & Favorite
     public function myPage(Request $request)
     {
         $reservations = Reservation::where('user_id', Auth::user()->id)->get();
@@ -20,7 +19,7 @@ class ReservationController extends Controller
         return view('my_page', compact('favorite', 'reservations'));
     }
 
-    // get reservations of shops
+
     public function index(Request $request)
     {
         $reservations = Auth::user()->shop->reservations;
@@ -53,7 +52,7 @@ class ReservationController extends Controller
         );
     }
 
-    // create Reservation
+
     public function create(ReservationRequest $request)
     {
         Reservation::create([
@@ -64,6 +63,7 @@ class ReservationController extends Controller
         ]);
         return view('done');
     }
+
 
     public function update(ReservationRequest $request)
     {

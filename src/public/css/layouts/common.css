@@ -108,7 +108,8 @@ header {
     display: none;
 }
 
-.nav-item a, .nav-item button {
+.nav-item a,
+.nav-item button {
     font-weight: 400;
     appearance: none;
     cursor: pointer;
@@ -120,25 +121,30 @@ header {
     background-color: transparent;
 }
 
-.nav-item--blue a{
-    padding: .25rem .5rem;
+.nav-item--blue a {
+    padding: 0.25rem 0.5rem;
     color: #fff;
     background-color: #305dff;
     border-radius: 5px;
 }
 
-.nunito-font{
+.nunito-font {
     font-family: "Nunito Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     font-variation-settings: "wdth" 100, "YTLC" 500;
 }
 
-main,a,input,select,button,textarea{
+main,
+a,
+input,
+select,
+button,
+textarea {
     font-family: "Noto Sans JP", sans-serif;
     font-optical-sizing: auto;
 }
 
-main{
+main {
     margin-bottom: 20px;
 }

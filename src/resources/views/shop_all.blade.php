@@ -41,7 +41,11 @@
     @foreach ($shops as $shop)
     @if($shop->name != '新規店舗')
     <div class="shop-card">
+        @if($shop->image_url != null)
         <img class="card-img" src="{{ $shop->image_url }}" alt="" srcset="">
+        @else
+        <div class="card-img card-img--null">画像はありません</div>
+        @endif
         <div class="card-text">
             <h3 class="card-title">{{ $shop->name }}</h3>
             <div class="tag-area">

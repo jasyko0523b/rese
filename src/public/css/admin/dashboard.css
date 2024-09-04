@@ -1,11 +1,11 @@
-.main-wrap{
+.main-wrap {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px 15px;
 }
 
-.owner-table-wrap{
+.owner-table-wrap {
     width: 100%;
     max-width: 400px;
     padding: 5px;
@@ -14,23 +14,23 @@
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
-.owner-table{
+.owner-table {
     width: 100%;
 }
 
-.owner-table-header{
+.owner-table-header {
     border-bottom: black 2px solid;
     text-align: left;
 }
 
-.owner-table-header--id{
+.owner-table-header--id {
     text-align: center;
 }
 
-.owner-table-item--id{
+.owner-table-item--id {
     text-align: center;
 }
 
-.owner-table tr{
-    border-bottom: #EEE 1px solid;
+.owner-table tr {
+    border-bottom: #eee 1px solid;
 }

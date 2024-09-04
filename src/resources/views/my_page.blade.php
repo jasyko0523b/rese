@@ -11,6 +11,11 @@
     <div class="reservation-container">
         <h3>予約状況</h3>
         <div class="reservation-card-area">
+            @foreach($errors->all() as $error)
+            <div class="reservation__error">
+                {{ $error }}
+            </div>
+            @endforeach
             @if($reservations->isEmpty())
             <p>予約はありません</p>
             @else
@@ -53,6 +58,8 @@
                 <form class="edit-form" action="/reservation/update" method="post">
                     @csrf
                     <input type="hidden" name="id" value="{{ $reservation->id }}">
+                    <input type="hidden" name="shop_id" value="{{ $reservation->shop->id }}">
+                    <input type="hidden" name="user_id" value="{{ $reservation->user->id }}">
                     <div class="group-row">
                         <label for="date">Date</label>
                         <input type="date" name="date" id="date" value="{{ $reservation->getDateString() }}" required>

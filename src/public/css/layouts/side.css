@@ -14,9 +14,9 @@ main {
 }
 
 @media screen and (max-width: 768px) {
-    main{
+    main {
         margin: 5rem auto 0;
-        padding: .5rem;
+        padding: 0.5rem;
     }
 }
 
@@ -28,7 +28,7 @@ aside {
 }
 
 @media screen and (max-width: 768px) {
-    aside{
+    aside {
         position: fixed;
         display: flex;
         width: 100%;
@@ -42,7 +42,7 @@ aside {
 }
 
 @media screen and (max-width: 768px) {
-    .side-content{
+    .side-content {
         border-bottom: none;
     }
 }
@@ -73,12 +73,12 @@ textarea {
     font-optical-sizing: auto;
 }
 
-.menu-button{
+.menu-button {
     display: none;
 }
 
 @media screen and (max-width: 768px) {
-    .menu-button{
+    .menu-button {
         position: absolute;
         display: block;
         top: 1rem;
@@ -87,29 +87,29 @@ textarea {
         background-color: transparent;
         color: #d6d8d9;
         border: none;
-        }
+    }
 
-    .menu-button:hover{
+    .menu-button:hover {
         cursor: pointer;
     }
 
-    .menu-button.is-active{
+    .menu-button.is-active {
         color: transparent;
     }
 
-    .menu-button.is-active::before{
+    .menu-button.is-active::before {
         position: absolute;
-        content: '×';
+        content: "×";
         color: #d6d8d9;
         top: 0;
         left: 1rem;
     }
 
-    .menu-wrapper{
+    .menu-wrapper {
         display: none;
     }
 
-    .menu-wrapper.is-active{
+    .menu-wrapper.is-active {
         display: inline-block;
     }
 }

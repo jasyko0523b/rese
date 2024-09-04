@@ -9,7 +9,11 @@
     <div class="shop-details-area">
         <button class="back-button" onclick="history.back()">＜</button>
         <div class="shop-name">{{ $shop->name }}</div>
+        @if($shop->image_url != null)
         <img class="shop-img" src="{{ $shop->image_url }}">
+        @else
+        <div class="no-image">画像はありません</div>
+        @endif
         <div class="tag-area">
             <div class="tag__item">{{ $shop->area->name }}</div>
             <div class="tag__item">{{ $shop->genre->name }}</div>
@@ -77,14 +81,19 @@
     <h4 class="reviews-top-title">口コミ評価</h4>
     <div class="reviews-top">
         <div class="reviews-average">
+            @if($ave != 0)
             <div class="reviews-average-value">
                 {{ $ave }}
+                <div class="reviews-count">({{ count($reviews) }}件)</div>
             </div>
+            @else
+            <div class="reviews-average--no-review">レビューがありません</div>
+            @endif
             <div class="reviews-average-star" style="--rate: {{ $ave }}"></div>
         </div>
         <div class="review__button-wrap">
             @if( !Auth::check() || !Auth::user()->hasVerifiedEmail() )
-            <p>※レビュー投稿はログイン後にご利用いただけます</p>
+            <p>※レビュー投稿は本登録後にご利用いただけます</p>
             @else
             <button class="review__button active">レビューを書く</button>
             @endif
@@ -120,6 +129,7 @@
     </div>
     <div class="review-list active">
         @foreach($reviews as $review)
+        @if($review->comment != null)
         <div class="review">
             <div class="review__header">
                 <div class="review__header--left">
@@ -135,6 +145,7 @@
             <hr>
             <div class="review__comment">{{ $review->comment }}</div>
         </div>
+        @endif
         @endforeach
     </div>
 </div>

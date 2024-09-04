@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ShopRegisterRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Shop;
 use App\Models\Area;
@@ -13,40 +14,6 @@ use App\Models\User;
 
 class ShopController extends Controller
 {
-    public function index(Request $request)
-    {
-        $areas = Area::all();
-        $genres = Genre::all();
-
-        if (empty($request->all())) {
-            $shops = Shop::all();
-        } else {
-            $area = $request->area ?? '';
-            $genre = $request->genre ?? '';
-            $text = $request->text ?? '';
-
-            $shops = Shop::when($area, function ($query, $area) {
-                return $query->where('area_id', 2);
-            })->get();
-
-            $shops = Shop::when($area, function ($query, $area) {
-                return $query->where('area_id', $area);
-            })->when($genre, function ($query, $genre) {
-                return $query->where('genre_id', $genre);
-            })->when($text, function ($query, $text) {
-                return $query->where('name', 'LIKE', '%' . $text . '%');
-            })->get();
-
-            if ($shops->isEmpty()) {
-                $shops = Shop::all();
-                return view('shop_all', compact('shops', 'areas', 'genres'))->with('message', '条件に合う店舗が見つかりませんでした');
-            }
-        }
-
-        return view('shop_all', compact('shops', 'areas', 'genres'));
-    }
-
-
     public function detail($shop_id)
     {
         $shop = Shop::where('id', $shop_id)->first();
@@ -59,34 +26,31 @@ class ShopController extends Controller
             $length++;
         }
         if ($length > 0) {
-            $ave = $sum / $length;
+            $ave = floor($sum / $length * 10) / 10;
         }
         return view('shop_detail', compact('shop', 'reviews', 'ave'));
     }
 
 
-    public function admin()
+    public function owner_detail(Request $request)
     {
-        $shops = Shop::all();
-        $addresses = [];
-        foreach ($shops as $shop) {
-            array_push($addresses, [
-                'id' => $shop->id,
-                'name' => $shop->name,
-                'email' => User::where('id', $shop->owner_id)->first()->email ?? '',
-            ]);
-        }
-        return view('admin.dashboard', compact('addresses'));
+        $user = $request->user();
+        $areas = Area::all();
+        $genres = Genre::all();
+        $shop = $user->shop;
+        return view('owner.shop_detail', compact('shop', 'areas', 'genres'));
     }
 
 
     public function register()
     {
-        return view('admin.shop_register');
+        $areas = Area::all();
+        $genres = Genre::all();
+        return view('admin.shop_register', compact('areas', 'genres'));
     }
 
 
-    public function create(Request $request)
+    public function create(ShopRegisterRequest $request)
     {
         $register = [
             'name' => $request->shop_name,
@@ -99,19 +63,12 @@ class ShopController extends Controller
 
         $shop = [
             'owner_id' => $owner->id,
-            'name' => '新規店舗',
+            'name' => $request->shop_name,
+            'area_id' => $request->area,
+            'genre_id' => $request->genre,
         ];
         Shop::create($shop);
-        return redirect('admin/dashboard');
-    }
-
-    public function owner_detail(Request $request)
-    {
-        $user = $request->user();
-        $areas = Area::all();
-        $genres = Genre::all();
-        $shop = Shop::where('owner_id', $user->id)->first();
-        return view('owner.shop_detail', compact('shop', 'areas', 'genres'));
+        return redirect('admin/shop_register')->with('message', '作成されました');
     }
 
 
@@ -146,5 +103,4 @@ class ShopController extends Controller
         $shop->update($new_shop);
         return redirect('owner/shop_detail');
     }
-
 }

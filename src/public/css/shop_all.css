@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .search-box{
+    .search-box {
         position: static;
         display: flex;
         flex-wrap: nowrap;
@@ -16,32 +16,33 @@
     }
 }
 
-.search-box form{
+.search-box form {
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
 }
 
-.search-box select,input{
+.search-box select,
+input {
     height: 2.5rem;
     border: none;
     border-radius: 5px;
 }
 
-.search-box select{
+.search-box select {
     flex: 2;
 }
 
-.input-text-wrap{
+.input-text-wrap {
     flex: 5;
 }
 
-.search-box input{
+.search-box input {
     width: 100%;
     padding-left: 30px;
 }
 
-.submit-button{
+.submit-button {
     appearance: none;
     border: none;
     border-radius: 0 5px 5px 0;
@@ -51,28 +52,28 @@
     background-color: #305dff;
 }
 
-.input-text-wrap{
+.input-text-wrap {
     position: relative;
     display: inline-block;
 }
 
-.input-text-wrap::before{
+.input-text-wrap::before {
     position: absolute;
-    content: '';
+    content: "";
     width: 20px;
     height: auto;
     top: 50%;
     left: 5px;
     aspect-ratio: 1/1;
-    transform: translate(0%,-50%);
+    transform: translate(0%, -50%);
     background-image: url(../img/search.svg);
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-#page-top{
+#page-top {
     position: fixed;
     z-index: 3;
     right: 20px;
@@ -84,11 +85,11 @@ html{
     text-align: center;
 }
 
-#page-top::before{
+#page-top::before {
     cursor: pointer;
     position: absolute;
     display: inline-block;
-    content: '';
+    content: "";
     width: 35px;
     height: auto;
     aspect-ratio: 1/1;
@@ -104,7 +105,7 @@ html{
     vertical-align: middle;
 }
 
-.message-area{
+.message-area {
     text-align: center;
     margin: 3rem;
 }

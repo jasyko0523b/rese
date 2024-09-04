@@ -13,7 +13,7 @@
     justify-content: center;
 }
 
-.card-header{
+.card-header {
     position: absolute;
     top: 0;
     left: 0;
@@ -21,16 +21,16 @@
     padding: 10px;
     text-align: center;
     color: #fff;
-    background-color: #305DFF;
+    background-color: #305dff;
     border-radius: 5px 5px 0 0;
 }
 
-.card-body{
+.card-body {
     margin-top: 10px;
     width: 80%;
 }
 
-.form-control{
+.form-control {
     padding: 5px;
     margin: 10px;
     border: 1px rgba(0, 0, 0, 0.3) solid;
@@ -44,15 +44,15 @@
     margin-top: 20px;
     margin-left: 250px;
     color: #fff;
-    background-color: #305DFF;
+    background-color: #305dff;
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     vertical-align: middle;
 }
 
-.submit-button:hover{
+.submit-button:hover {
     cursor: pointer;
     background-color: skyblue;
-    transition: .3s;
+    transition: 0.3s;
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FavoriteController;
@@ -32,12 +33,8 @@ Route::group(['plefix' => 'email'], function(){
     Route::post('/verification-notification', [VerificationController::class, 'send_request'])->middleware(['auth', 'throttle:6.1'])->name('verification.send');
 });
 
-
-
-
-
-Route::get('/', [ShopController::class, 'index']);
-Route::post('/', [ShopController::class, 'index']);
+Route::get('/', [SearchController::class, 'index']);
+Route::post('/', [SearchController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 Route::get('/reservation/{reservation_id}', [QrController::class, 'reservation_info'])->name('reservation_info');
 
@@ -70,7 +67,7 @@ Route::middleware('verified')->group(function () {
     });
 
     Route::group(['prefix' => 'admin'], function (){
-        Route::get('/dashboard', [ShopController::class, 'admin']);
+        Route::get('/dashboard', [SearchController::class, 'admin']);
         Route::get('/shop_register', [ShopController::class, 'register']);
         Route::post('/add', [ShopController::class, 'create']);
         Route::get('/email', [MailController::class, 'email_writing']);

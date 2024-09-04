@@ -1,7 +1,7 @@
 .username {
     text-align: center;
 }
-.message__wrap{
+.message__wrap {
     width: 400px;
     margin: auto;
 }
@@ -21,12 +21,12 @@
     justify-content: center;
 }
 
-.retransmission-box{
+.retransmission-box {
     text-align: right;
 }
 
-.retransmission-box button{
-    padding: .5rem 1.5rem;
+.retransmission-box button {
+    padding: 0.5rem 1.5rem;
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);

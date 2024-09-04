@@ -30,7 +30,7 @@
                 <div class="tab-pane" id="edit">
                     <form class="edit-area" action="/owner/shop_detail/update/text" method="post">
                         @csrf
-                        <input type="hidden" name="shop_id" value="1">
+                        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                         <div class="group-row">
                             <label for="name" class="form-label">店舗名</label>
                             <input class="input-field" type="text" name="name" id="name" value="{{ $shop->name }}">

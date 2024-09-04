@@ -22,7 +22,7 @@
     align-items: center;
 }
 
-.register-form input{
+.register-form input {
     appearance: none;
     margin: auto;
     height: 1rem;
@@ -31,12 +31,12 @@
     border-bottom: 1px solid black;
 }
 
-.input-wrap{
+.input-wrap {
     width: 100%;
     margin: 1rem;
 }
 
-.input-wrap::before{
+.input-wrap::before {
     display: inline-block;
     content: "";
     width: 1rem;
@@ -60,16 +60,16 @@
     background-image: url(../img/lock.svg);
 }
 
-.submit-button__wrap{
+.submit-button__wrap {
     width: 100%;
     text-align: right;
     margin: 20px;
     padding-right: 5%;
 }
 
-.submit-button{
+.submit-button {
     cursor: pointer;
-    padding: .5rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     color: #fff;
     background-color: #305dff;
     border: none;

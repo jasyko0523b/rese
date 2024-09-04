@@ -2,18 +2,18 @@
     padding: 0px 20px;
 }
 
-.card{
+.card {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
-.card-header{
-    padding: .5rem;
-    border-bottom: #EEE 1px solid;
+.card-header {
+    padding: 0.5rem;
+    border-bottom: #eee 1px solid;
 }
 
-.card-header ul{
+.card-header ul {
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
@@ -21,29 +21,29 @@
     list-style: none;
 }
 
-.tab-link{
+.tab-link {
     display: block;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
-    color: #7F7F7F;
+    color: #7f7f7f;
     background-color: transparent;
     text-decoration: none;
 }
 
-.tab-link.active{
+.tab-link.active {
     color: #305dff;
     background-color: rgba(48, 93, 255, 0.2);
 }
 
-.tab-pane{
+.tab-pane {
     display: none;
 }
 
-.tab-pane.active{
+.tab-pane.active {
     display: block;
 }
 
-.shop-details-area{
+.shop-details-area {
     width: 100%;
     padding: 20px;
 }
@@ -70,23 +70,23 @@
     content: "#";
 }
 
-.edit-area{
+.edit-area {
     padding: 20px;
 }
 
-.group-row{
+.group-row {
     display: flex;
     box-sizing: border-box;
     margin-bottom: 10px;
 }
 
-.group-row label{
+.group-row label {
     text-align: left;
     flex: 0 0 20%;
     max-width: 20%;
 }
 
-.input-field{
+.input-field {
     flex: 0 0 80%;
     max-width: 80%;
     height: calc(2.25rem);
@@ -94,26 +94,26 @@
     border-radius: 5px;
 }
 
-.input-field--image{
+.input-field--image {
     border: none;
 }
 
-.input-field--image::file-selector-button{
+.input-field--image::file-selector-button {
     appearance: none;
     cursor: pointer;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     color: #fff;
     background-color: #305dff;
     border: none;
     border-radius: 5px;
 }
 
-.input-field--sentence{
+.input-field--sentence {
     min-height: 10rem;
     resize: vertical;
 }
 
-.image__preview{
+.image__preview {
     padding: 20px;
     width: 100%;
     height: auto;
@@ -122,14 +122,14 @@
     border-radius: 5px;
 }
 
-.align-right{
+.align-right {
     text-align: right;
 }
 
 .submit-button {
     cursor: pointer;
     appearance: none;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     color: #fff;
     background-color: #0538ff;
     border: none;
