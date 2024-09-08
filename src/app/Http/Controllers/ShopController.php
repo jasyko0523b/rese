@@ -94,7 +94,7 @@ class ShopController extends Controller
         $user = $request->user();
         $shop = Shop::where('owner_id', $user->id)->first();
 
-        $path = $request->file('shop_img')->store('shop_image', 'public');
+        $path = $request->file('shop_img')->store('shop_image');
 
         $new_shop = [
             'image_url' => Storage::url($path) ?? $shop->image_url,
