@@ -44,7 +44,7 @@ services:
       - mysql
     ports:
       - 8080:80
-  
+
   mailhog:
     image: mailhog/mailhog
     restart: always

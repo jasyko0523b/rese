@@ -17,6 +17,7 @@ class VerificationController extends Controller
         return view('auth.verify-email');
     }
 
+
     public function verified(EmailVerificationRequest $request)
     {
         $request->fulfill();

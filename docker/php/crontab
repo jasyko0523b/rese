@@ -1,0 +1,2 @@
+PATH=/usr/bin:/bin:/usr/local/bin
+* * * * * cd /var/www/ && php artisan schedule:run >> /dev/null 2>&1

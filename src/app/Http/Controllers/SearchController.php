@@ -42,6 +42,7 @@ class SearchController extends Controller
         return view('shop_all', compact('shops', 'areas', 'genres'));
     }
 
+
     public function admin()
     {
         $shops = Shop::all();

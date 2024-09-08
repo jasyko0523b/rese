@@ -18,7 +18,6 @@ class PaymentController extends Controller
         return view('payment.create', compact('amount'));
     }
 
-
     public function store(Request $request)
     {
         \Stripe\Stripe::setApiKey(config('stripe.stripe_secret_key'));

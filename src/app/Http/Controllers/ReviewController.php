@@ -7,8 +7,6 @@ use App\Models\Review;
 
 class ReviewController extends Controller
 {
-
-    // create Review
     public function review(Request $request)
     {
         $review = [
@@ -20,5 +18,4 @@ class ReviewController extends Controller
         Review::create($review);
         return redirect()->back();
     }
-
 }
