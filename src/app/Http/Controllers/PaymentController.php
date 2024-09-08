@@ -8,7 +8,8 @@ use Exception;
 class PaymentController extends Controller
 {
 
-    public function amount(){
+    public function amount()
+    {
         return view('payment.amount');
     }
 
@@ -31,6 +32,6 @@ class PaymentController extends Controller
         } catch (Exception $e) {
             return back()->with('flash_alert', '決済に失敗しました！(' . $e->getMessage() . ')');
         }
-    return view('payment.done')->with('message', '決済が完了しました');
+        return view('payment.done')->with('message', '決済が完了しました');
     }
 }

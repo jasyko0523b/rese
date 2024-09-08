@@ -24,6 +24,7 @@ class VerificationController extends Controller
         return redirect('/mypage');
     }
 
+
     public function send_request(Request $request)
     {
         $request->user()->sendEmailVerificationNotification();

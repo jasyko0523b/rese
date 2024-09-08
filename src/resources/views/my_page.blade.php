@@ -10,6 +10,11 @@
 <div class="flexbox">
     <div class="reservation-container">
         <h3>予約状況</h3>
+        @if(session('message'))
+        <div>
+            <p> {{ session('message') }}</p>
+        </div>
+        @endif
         <div class="reservation-card-area">
             @foreach($errors->all() as $error)
             <div class="reservation__error">

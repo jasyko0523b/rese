@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Mail;
-
 use App\Mail\AnnounceMail;
-
 use App\Models\User;
 
 class MailController extends Controller
@@ -16,6 +13,7 @@ class MailController extends Controller
     {
         return view('admin.email_writing');
     }
+
 
     public function send_all(Request $request)
     {

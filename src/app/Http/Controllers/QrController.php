@@ -40,7 +40,6 @@ class QrController extends Controller
     }
 
 
-    // information shown by qr
     public function reservation_info($reservation_id)
     {
         $reservation = Reservation::find($reservation_id);

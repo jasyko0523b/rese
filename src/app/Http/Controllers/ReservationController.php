@@ -81,6 +81,6 @@ class ReservationController extends Controller
     public function delete(Request $request)
     {
         Reservation::find($request->id)->delete();
-        return redirect('/mypage');
+        return redirect('/mypage')->with('message', '予約を削除しました');
     }
 }
