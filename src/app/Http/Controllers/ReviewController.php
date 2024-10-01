@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ReviewRequest;
 use App\Models\Review;
 
 class ReviewController extends Controller
 {
-    public function review(Request $request)
+    public function review(ReviewRequest $request)
     {
         $review = [
             'shop_id' => $request->shop_id,

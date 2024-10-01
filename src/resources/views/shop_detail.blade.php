@@ -78,6 +78,13 @@
     </form>
 </div>
 <div class="reviews-area">
+    <ul>
+        @foreach($errors->review->all() as $error)
+        <li>
+            {{ $error }}
+        </li>
+        @endforeach
+    </ul>
     <h4 class="reviews-top-title">口コミ評価</h4>
     <div class="reviews-top">
         <div class="reviews-average">

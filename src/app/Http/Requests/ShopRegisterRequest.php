@@ -35,8 +35,8 @@ class ShopRegisterRequest extends FormRequest
                 Rule::unique(User::class),
             ],
             'password' => ['required', 'min:8', 'max:191'],
-            'area' => 'exists:areas,id|required|integer',
-            'genre' => 'exists:genres,id|required|integer',
+            'area' => ['exists:areas,id', 'required', 'integer'],
+            'genre' => ['exists:genres,id', 'required', 'integer'],
         ];
     }
 }
