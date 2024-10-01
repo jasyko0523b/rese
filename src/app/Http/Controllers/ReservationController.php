@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
-    public function myPage(Request $request)
+    public function my_page(Request $request)
     {
         $reservations = Reservation::where('user_id', Auth::user()->id)->get();
         $favorite = Shop::whereIn('id', Auth::user()->favorite)->get();

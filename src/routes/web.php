@@ -44,7 +44,7 @@ Route::middleware('verified')->group(function () {
     Route::put('/favorite', [FavoriteController::class, 'favorite']);
     Route::post('/review', [ReviewController::class, 'review']);
 
-    Route::get('/mypage', [ReservationController::class, 'myPage']);
+    Route::get('/mypage', [ReservationController::class, 'my_page']);
 
     Route::post('/reservation/create', [ReservationController::class, 'create']);
     Route::post('/reservation/update', [ReservationController::class, 'update']);
