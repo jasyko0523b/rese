@@ -93,54 +93,62 @@ http://ec2-54-250-90-239.ap-northeast-1.compute.amazonaws.com
 $ git clone git@github.com:jasyko0523b/rese.git
 $ docker-compose up -d --build
 ```
-PHPコンテナにアクセスし、composer.json に記載されたパッケージをインストールします
+### PHPコンテナにアクセスしてコマンドを実行する
+下記コマンドを実行しPHPコンテナにアクセスします
 ```
 $ docker-compose exec php bash
 ```
+以降はPHPコンテナ内でのコマンド実行になります
+composer.json に記載されたパッケージをインストールします
+
 ```
-// PHP コンテナ内
 # composer install
 ```
-### src以下のアクセス権限を変更する
+
+`src`ディレクトリ内の`.env.development`をコピーして`.env`を作成します
+
 ```
-sudo chmod 777 -R src/*
+# cp .env.development .env
 ```
 
-### .env ファイルを作成する
-`src`ディレクトリ内の`.env.development`をコピーして`.env`を作成します
+アプリケーションキーを作成する
+
 ```
-$ cp src/.env.development src/.env
-```
-### キーを作成する
-phpコンテナにアクセスして、アプリケーションキーを生成してください
-```
-// php コンテナ内
 # php artisan key:generate
 ```
-### ストレージへのアクセス
-phpコンテナにアクセスして、ストレージへのシンボリックリンクを作成してください
+
+ストレージへのシンボリックリンクを作成します
 ```
 # php artisan storage:link
 ```
-### マイグレーションとシーディングを実行する
+
+マイグレーションとシーディングを実行する
+
 ```
-// phpコンテナ内
 # php artisan migrate
 # php artisan db:seed
 ```
+
+PHPコンテナから抜けます
+
+```
+# exit
+```
+### src以下のアクセス権限を変更する
+```
+$ sudo chmod 777 -R src/*
+```
+
 ブラウザより`127.0.0.0`にアクセスして動作を確認してください
+
 ### タスクスケジューラーの登録
 cronを使用して、タスクスケジュールの実行をする
 ```
 // php コンテナ内
 # service cron restart
 ```
-毎朝8時に、ユーザーに予約確認メールが送信される。
-テストの際には下記を実行して、タスクの動作を確認できます。
-```
-// php コンテナ内
-# php artisan schedule:work
-```
+毎朝8時に、ユーザーに予約確認メールが送信されます。
+
 ## アカウントの種類（テストユーザーなど）
 テストユーザ一覧
 - 【一般利用者】
