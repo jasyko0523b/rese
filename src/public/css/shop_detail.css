@@ -1,6 +1,7 @@
 .content-wrap {
     display: flex;
     padding: 0px 20px;
+    justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -11,6 +12,7 @@
 
 .shop-details-area {
     width: 100%;
+    max-width: 700px;
     padding: 20px;
 }
 
@@ -43,6 +45,7 @@
 
 .shop-img {
     width: 100%;
+    object-fit: cover;
 }
 
 .no-image {
@@ -61,12 +64,56 @@
     content: "#";
 }
 
+.my-review__header {
+    display: flex;
+    background-color: #597DFF;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.my-review__header > h3{
+    color: #fff;
+    font-weight: 400;
+    margin: 0;
+    padding: 10px;
+}
+
+.my-review__header--right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.delete-button{
+    cursor: pointer;
+    appearance: none;
+    border: none;
+    padding: 0;
+    margin-right: 10px;
+    font-size: medium;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+}
+
+.edit-link{
+    appearance: none;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+}
+
+.edit-link:visited{
+    color: black;
+}
+
 .reservation-area {
     position: relative;
     width: 100%;
-    margin-top: -5%;
+    max-width: 700px;
+    height: fit-content;
     margin-left: 20px;
     padding: 0px 20px;
+    padding-bottom: 150px;
     color: #fff;
     background-color: #305dff;
     border-radius: 5px;
@@ -112,9 +159,9 @@
 .reservation-area select {
     border: none;
     width: 100%;
-    height: 2rem;
+    height: 3rem;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 #date::-webkit-calendar-picker-indicator {
@@ -156,11 +203,18 @@
 }
 
 .reviews-area {
-    margin: 20px;
+    max-width: 1400px;
+    margin: 20px auto;
     padding: 20px;
     background-color: white;
     border-radius: 5px;
     box-shadow: inset 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+    .reviews-area{
+        margin: 20px;
+    }
 }
 
 .reviews-top-title {
@@ -230,7 +284,7 @@
     left: 0px;
     width: calc(var(--rate) * 1em);
     height: 54px;
-    color: #feca2f;
+    color: #305dff;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -257,6 +311,13 @@
 
 .review-list.active {
     display: inline;
+}
+
+.review-list__title{
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    background-color: #597DFF;
 }
 
 .review {
@@ -290,7 +351,6 @@
 .review__header-star {
     flex: 1;
     position: relative;
-    display: inline-block;
     font-size: 16px;
     min-width: 5rem;
 }
@@ -310,7 +370,7 @@
     left: 0px;
     width: calc(var(--rate) * 1em);
     height: 24px;
-    color: #feca2f;
+    color: #305dff;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -319,75 +379,25 @@
     flex: 1;
 }
 
-.write-area {
-    display: none;
-}
-
-.write-area.active {
-    display: inline;
-}
-
-.write-form {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #eee;
-    border-radius: 5px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-}
-
-.star {
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    mask-image: url(../img/star.svg);
-    mask-repeat: no-repeat;
-    mask-size: contain;
-}
-
-.star:checked {
-    background-color: #feca2f;
-}
-
-.rating-star > .star:not(:checked) {
-    background-color: #feca2f;
-}
-
-.star:checked ~ .star {
-    background-color: #c4c4c4;
-}
-
-.group-row {
+.review__content {
     display: flex;
-    box-sizing: border-box;
-    margin-bottom: 10px;
+    justify-content: space-between;
 }
 
-.group-row label,
-.form-label {
-    text-align: left;
-    flex: 0 0 20%;
-    max-width: 20%;
+@media screen and (max-width: 768px) {
+    .review__content {
+        display: inline;
+    }
 }
 
-.group-row textarea {
-    flex: 0 0 80%;
-    max-width: 80%;
-    min-height: 4rem;
-    resize: vertical;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+.review__image {
+    width: 30%;
+    max-width: 200px;
+    object-fit: contain;
 }
 
-.align-right {
-    text-align: right;
-}
-
-.review-submit-button {
-    cursor: pointer;
-    appearance: none;
-    padding: 0.5rem 1rem;
-    color: #fff;
-    background-color: #305dff;
-    border: none;
-    border-radius: 5px;
+@media screen and (max-width: 768px) {
+    .review__image {
+        width: 100%;
+    }
 }

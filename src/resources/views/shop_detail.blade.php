@@ -7,7 +7,7 @@
 @section('content')
 <div class="content-wrap">
     <div class="shop-details-area">
-        <button class="back-button" onclick="history.back()">＜</button>
+        <button class="back-button" onclick="location.href='/'">＜</button>
         <div class="shop-name">{{ $shop->name }}</div>
         @if($shop->image_url != null)
         <img class="shop-img" src="{{ $shop->image_url }}">
@@ -78,65 +78,82 @@
     </form>
 </div>
 <div class="reviews-area">
-    <ul>
-        @foreach($errors->review->all() as $error)
-        <li>
-            {{ $error }}
-        </li>
-        @endforeach
-    </ul>
     <h4 class="reviews-top-title">口コミ評価</h4>
     <div class="reviews-top">
         <div class="reviews-average">
-            @if($ave != 0)
+            @if($shop->averageRating() != 0)
             <div class="reviews-average-value">
-                {{ $ave }}
-                <div class="reviews-count">({{ count($reviews) }}件)</div>
+                {{ $shop->averageRating() }}
+                <div class="reviews-count">({{ count($shop->reviews) }}件)</div>
             </div>
             @else
-            <div class="reviews-average--no-review">レビューがありません</div>
+            <div class="reviews-average--no-review">口コミがありません</div>
             @endif
-            <div class="reviews-average-star" style="--rate: {{ $ave }}"></div>
+            <div class="reviews-average-star" style="--rate: {{ $shop->averageRating() }}"></div>
         </div>
         <div class="review__button-wrap">
             @if( !Auth::check() || !Auth::user()->hasVerifiedEmail() )
-            <p>※レビュー投稿は本登録後にご利用いただけます</p>
+            <p>※口コミ投稿は本登録後にご利用いただけます</p>
             @else
-            <button class="review__button active">レビューを書く</button>
+            @if(!$my_review)
+            <button onclick="location.href='/detail/{{$shop->id}}/review'" class="review__button active">口コミを投稿する</button>
+            @endif
             @endif
         </div>
     </div>
     <hr>
-    <div class="write-area">
-        <form class="write-form" action="/review" method="post">
-            @csrf
-            <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-            @if(Auth::check())
-            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-            @endif
-            <div class="group-row">
-                <div class="form-label">評価</div>
-                <div class="rating-star">
-                    <input type="radio" class="star" name="rank" value="1">
-                    <input type="radio" class="star" name="rank" value="2">
-                    <input type="radio" class="star" name="rank" value="3">
-                    <input type="radio" class="star" name="rank" value="4">
-                    <input type="radio" class="star" name="rank" value="5">
-                </div>
-                <div class="selected-rank"></div>
-            </div>
-            <div class="group-row">
-                <label for="comment" class="form-label">コメント</label>
-                <textarea name="comment" id="comment"></textarea>
-            </div>
-            <div class="align-right">
-                <button class="review-submit-button" type="submit">投稿する</button>
-            </div>
-        </form>
-    </div>
     <div class="review-list active">
-        @foreach($reviews as $review)
-        @if($review->comment != null)
+        @if($my_review)
+        <div class="my-review">
+            <div class="my-review__header">
+                <h3>あなたの口コミ</h3>
+                <div class="my-review__header--right">
+                    <div><a href="/detail/{{$shop->id}}/review" class="edit-link">
+                            編集する
+                        </a></div>
+                    <div>
+                        <form action="/detail/{{ $shop->id }}/review/delete" method="post">
+                            @csrf
+                            <input type="hidden" name="review_id" value="{{ $my_review->id }}">
+                            <button type="submit" class="delete-button">削除する</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review__header">
+                    <div class="review__header--left">
+                        <div class="review__header-rank">
+                            <div class="review__header-star" style="--rate: {{ $my_review->rank }}"></div>
+                            <div class="review__header-value">{{ $my_review->rank . '.0' }}</div>
+                        </div>
+                    </div>
+                    <div class="review__header--right">
+                        <div class="review__header-date">{{ str_replace('-', '/', substr($my_review->created_at, 0, 10)) }}</div>
+                    </div>
+                </div>
+                @if($my_review->comment != null || $my_review->image_url != null)
+                <hr>
+                <div class="review__content">
+                    @if($my_review->comment != null)
+                    <div class="review__comment">
+                        {{ $my_review->comment }}
+                    </div>
+                    @endif
+                    @if($my_review->image_url != null)
+                    <img src="{{$my_review->image_url}}" alt="" class="review__image">
+                    @endif
+                </div>
+                @endif
+            </div>
+        </div>
+        <hr>
+        @endif
+        @if((!$my_review&&count($shop->reviews)>0) || $my_review && count($shop->reviews)>1)
+        <div class="review-list__title">全ての口コミ情報</div>
+        @endif
+        @foreach($shop->reviews->reverse() as $review)
+        @if((!Auth::check() || (Auth::check() && $review->user_id != Auth::user()->id)) && ($review->comment != null || $review->image_url != null))
         <div class="review">
             <div class="review__header">
                 <div class="review__header--left">
@@ -150,17 +167,24 @@
                 </div>
             </div>
             <hr>
-            <div class="review__comment">{{ $review->comment }}</div>
+            <div class="review__content">
+                @if($review->comment != null)
+                <div class="review__comment">
+                    {{ $review->comment }}
+                </div>
+                @endif
+                @if($review->image_url != null)
+                <img src="{{$review->image_url}}" alt="" class="review__image">
+                @endif
+            </div>
         </div>
         @endif
         @endforeach
     </div>
 </div>
-
 @endsection
 
 @section('js')
 <script type="text/javascript" src="{{ asset('js/reservationInfoTable.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/reviewButton.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/reviewStar.js') }}"></script>
 @endsection

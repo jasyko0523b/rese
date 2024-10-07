@@ -1,0 +1,163 @@
+.content-wrap {
+    display: flex;
+    padding: 0px 20px;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .content-wrap {
+        display: inline;
+    }
+}
+
+.shop-details-area {
+    flex: 3;
+    position: relative;
+    width: 100%;
+    padding: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .shop-details-area {
+        padding-top: 0;
+    }
+}
+
+.title {
+    margin-bottom: 60px;
+}
+
+.shop-card {
+    margin: 20px auto;
+}
+
+.shop-details-area::after {
+    position: absolute;
+    content: "";
+    top: 20%;
+    right: 0;
+    width: 1px;
+    height: 60%;
+    background-color: black;
+}
+
+@media screen and (max-width: 768px) {
+    .shop-details-area::after {
+        top: 100%;
+        right: 20%;
+        width: 60%;
+        height: 1px;
+    }
+}
+
+.reviews-area {
+    flex: 4;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .reviews-area {
+        width: auto;
+        margin: 0 20px;
+        padding: 20px;
+        padding-bottom: calc(20px + 3rem);
+    }
+}
+
+.star {
+    appearance: none;
+    width: 3rem;
+    height: auto;
+    aspect-ratio: 1/1;
+    mask-image: url(../img/star.svg);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+}
+
+.star:checked {
+    background-color: #305dff;
+}
+
+.rating-star > .star:not(:checked) {
+    background-color: #305dff;
+}
+
+.star:checked ~ .star {
+    background-color: #c4c4c4;
+}
+
+.comment {
+    width: 100%;
+    height: 8rem;
+    min-height: 4rem;
+    resize: vertical;
+    border: 1px solid #ced4da;
+    background-color: transparent;
+}
+
+.preview-area {
+    display: flex;
+    width: 100%;
+    gap: 2%;
+    flex-wrap: wrap;
+    margin-bottom: 2%;
+}
+
+.preview-img {
+    width: 48%;
+}
+
+.drop-area {
+    position: relative;
+    width: 100%;
+    height: 8rem;
+    background-color: #fff;
+    text-align: center;
+    padding: 2.5rem;
+}
+
+.drop-area__message {
+    width: 100%;
+    margin: 0;
+}
+
+.drop-area__message--drop {
+    font-size: small;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.image-delete__container{
+    margin: 10px 0;
+    text-align: right;
+}
+
+.image-delete-check{
+    transform: scale(1.5);
+    margin: 5px;
+}
+
+.submit-area{
+    text-align: center;
+}
+
+.review-submit-button {
+    cursor: pointer;
+    appearance: none;
+    padding: 1rem;
+    width: 60%;
+    background-color: #fff;
+    border: none;
+    border-radius: 50px;
+}
+@media screen and (max-width: 768px) {
+    .review-submit-button {
+        width: 80%;
+    }
+}

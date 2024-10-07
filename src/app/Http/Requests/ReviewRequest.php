@@ -30,7 +30,7 @@ class ReviewRequest extends FormRequest
             'shop_id' => ['exists:shops,id', 'required', 'integer'],
             'user_id' => ['exists:users,id', 'required', 'integer'],
             'rank' => ['required', 'integer', 'min:1', 'max:5'],
-            'comment' => ['nullable', 'string', 'max:191'],
+            'comment' => ['nullable', 'string', 'max:400'],
         ];
     }
 }

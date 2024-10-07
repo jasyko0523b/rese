@@ -8,8 +8,9 @@ laravel学習のために作成した。
 外部の飲食店予約サービスは手数料をとられるので自社サービスを持ちたい、というクライアントの要望を想定しています
 
 ## アプリケーションURL
-http://ec2-54-250-90-239.ap-northeast-1.compute.amazonaws.com
+~~http://ec2-54-250-90-239.ap-northeast-1.compute.amazonaws.com~~
 
+AWS環境は閉鎖しました
 ## 機能一覧
 - 登録店舗の一覧取得、検索(エリア、ジャンル、店名)
 - 登録店舗の詳細取得

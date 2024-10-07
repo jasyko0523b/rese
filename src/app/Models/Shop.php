@@ -33,8 +33,6 @@ class Shop extends Model
         return $this->hasMany(Review::class);
     }
 
-
-
     public function area(){
         return $this->belongsTo(Area::class);
     }
@@ -42,5 +40,11 @@ class Shop extends Model
     public function genre()
     {
         return $this->belongsTo(Genre::class);
+    }
+
+    public function averageRating(){
+        $avg = $this->reviews()->avg('rank');
+        $avg = floor($avg* 10) / 10;
+        return $avg;
     }
 }

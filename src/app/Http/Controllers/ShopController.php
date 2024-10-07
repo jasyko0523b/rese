@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ShopRegisterRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
-use App\Models\Review;
 use App\Models\User;
 
 
@@ -16,19 +16,13 @@ class ShopController extends Controller
 {
     public function detail($shop_id)
     {
-        $shop = Shop::where('id', $shop_id)->first();
-        $reviews = Review::where('shop_id', $shop_id)->get()->reverse();
-        $length = 0;
-        $sum = 0;
-        $ave = 0;
-        foreach ($reviews as $review) {
-            $sum = $sum + $review->rank;
-            $length++;
+        $shop = Shop::find($shop_id);
+        if(Auth::check()){
+            $my_review = Auth::user()->getReviewOfShop($shop->id);
+        }else{
+            $my_review = null;
         }
-        if ($length > 0) {
-            $ave = floor($sum / $length * 10) / 10;
-        }
-        return view('shop_detail', compact('shop', 'reviews', 'ave'));
+        return view('shop_detail', compact('shop', 'my_review'));
     }
 
 

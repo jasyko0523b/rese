@@ -17,9 +17,9 @@ class ReviewsTableSeeder extends Seeder
     {
         $shops = Shop::all();
 
-        foreach($shops as $shop){
+        for($i= 0; $i< count($shops) -3; $i++){
             Review::factory(10)->create([
-                'shop_id' => $shop->id,
+                'shop_id' => $shops[$i]->id,
             ]);
         }
     }

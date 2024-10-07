@@ -22,10 +22,6 @@ class SearchController extends Controller
             $text = $request->text ?? '';
 
             $shops = Shop::when($area, function ($query, $area) {
-                return $query->where('area_id', 2);
-            })->get();
-
-            $shops = Shop::when($area, function ($query, $area) {
                 return $query->where('area_id', $area);
             })->when($genre, function ($query, $genre) {
                 return $query->where('genre_id', $genre);

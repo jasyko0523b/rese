@@ -42,7 +42,9 @@ Route::get('/reservation/{reservation_id}', [QrController::class, 'reservation_i
 Route::middleware('verified')->group(function () {
     Route::get('redirects', [RedirectController::class, 'index']);
     Route::put('/favorite', [FavoriteController::class, 'favorite']);
-    Route::post('/review', [ReviewController::class, 'review']);
+    Route::get('/detail/{shop_id}/review', [ReviewController::class, 'index']);
+    Route::post('/detail/{shop_id}/review/create', [ReviewController::class, 'review']);
+    Route::post('/detail/{shop_id}/review/delete', [ReviewController::class, 'delete']);
 
     Route::get('/mypage', [ReservationController::class, 'my_page']);
 
@@ -70,6 +72,9 @@ Route::middleware('verified')->group(function () {
         Route::get('/dashboard', [SearchController::class, 'admin']);
         Route::get('/shop_register', [ShopController::class, 'register']);
         Route::post('/add', [ShopController::class, 'create']);
+        Route::get('/shop_csv', function(){
+            return view('admin.shop_csv');
+        });
         Route::get('/email', [MailController::class, 'email_writing']);
         Route::post('/email/send_all', [MailController::class, 'send_all']);
     });
