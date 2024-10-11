@@ -5,8 +5,6 @@
 @endsection
 
 @section('content')
-
-
 <div class="content-wrap">
     <div class="card">
         <div class="card-header">

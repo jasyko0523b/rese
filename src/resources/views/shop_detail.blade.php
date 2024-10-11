@@ -10,7 +10,7 @@
         <button class="back-button" onclick="location.href='/'">＜</button>
         <div class="shop-name">{{ $shop->name }}</div>
         @if($shop->image_url != null)
-        <img class="shop-img" src="{{ $shop->image_url }}">
+        <img class="shop-img" src="{{ $shop->image_url }}" onerror="this.onerror = null;invalidImage(this);">
         @else
         <div class="no-image">画像はありません</div>
         @endif
@@ -153,7 +153,7 @@
         <div class="review-list__title">全ての口コミ情報</div>
         @endif
         @foreach($shop->reviews->reverse() as $review)
-        @if((!Auth::check() || (Auth::check() && $review->user_id != Auth::user()->id)) && ($review->comment != null || $review->image_url != null))
+        @if((!Auth::check() || (Auth::check() && $review->user_id != Auth::user()->id)))
         <div class="review">
             <div class="review__header">
                 <div class="review__header--left">
@@ -163,9 +163,17 @@
                     </div>
                 </div>
                 <div class="review__header--right">
+                    @can('admin')
+                    <form action="/detail/{{ $shop->id }}/review/delete" method="post">
+                        @csrf
+                        <input type="hidden" name="review_id" value="{{ $review->id }}">
+                        <button class="review-delete-button" type="submit">削除する</button>
+                    </form>
+                    @endcan
                     <div class="review__header-date">{{ str_replace('-', '/', substr($review->created_at, 0, 10)) }}</div>
                 </div>
             </div>
+            @if($review->comment != null || $review->image_url != null)
             <hr>
             <div class="review__content">
                 @if($review->comment != null)
@@ -177,6 +185,7 @@
                 <img src="{{$review->image_url}}" alt="" class="review__image">
                 @endif
             </div>
+            @endif
         </div>
         @endif
         @endforeach
@@ -186,5 +195,5 @@
 
 @section('js')
 <script type="text/javascript" src="{{ asset('js/reservationInfoTable.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/reviewStar.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/invalidImage.js') }}"></script>
 @endsection

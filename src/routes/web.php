@@ -12,7 +12,8 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\QrController;
-
+use App\Http\Controllers\CsvController;
+use App\Http\Controllers\ShopImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ use App\Http\Controllers\QrController;
 |
 */
 
-Route::group(['plefix' => 'email'], function(){
+Route::group(['plefix' => 'email'], function () {
     Route::get('/verify', [VerificationController::class, 'please_verify'])->middleware('auth')->name('verification.notice');
 
     Route::get('/verify/{id}/{hash}', [VerificationController::class, 'verified'])->middleware(['auth', 'signed'])->name('verification.verify');
@@ -55,7 +56,7 @@ Route::middleware('verified')->group(function () {
     Route::get('/reservation/qr/download', [QrController::class, 'download'])->name('qr.download');
 
 
-    Route::group(['prefix' => 'owner'], function (){
+    Route::group(['prefix' => 'owner'], function () {
         Route::get('/dashboard', [ReservationController::class, 'index']);
         Route::get('/shop_detail', [ShopController::class, 'owner_detail']);
         Route::post('/shop_detail/update/text', [ShopController::class, 'update_text']);
@@ -68,13 +69,15 @@ Route::middleware('verified')->group(function () {
         Route::post('/store', [PaymentController::class, 'store'])->name('store');
     });
 
-    Route::group(['prefix' => 'admin'], function (){
+    Route::group(['prefix' => 'admin'], function () {
         Route::get('/dashboard', [SearchController::class, 'admin']);
         Route::get('/shop_register', [ShopController::class, 'register']);
         Route::post('/add', [ShopController::class, 'create']);
-        Route::get('/shop_csv', function(){
-            return view('admin.shop_csv');
-        });
+        Route::get('/shop_csv', [CsvController::class, 'index']);
+        Route::post('/shop_csv/import', [CsvController::class, 'import']);
+
+        Route::get('/shop_image', [ShopImageController::class, 'index']);
+        Route::post('/shop_image/upload', [ShopImageController::class, 'upload']);
         Route::get('/email', [MailController::class, 'email_writing']);
         Route::post('/email/send_all', [MailController::class, 'send_all']);
     });

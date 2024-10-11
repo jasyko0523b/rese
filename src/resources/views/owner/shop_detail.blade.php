@@ -19,7 +19,7 @@
                 <div class="tab-pane" id="info">
                     <div class="shop-details-area">
                         <div class="shop-name">{{ $shop->name }}</div>
-                        <img class="shop-img" src="{{ $shop->image_url }}">
+                        <img class="shop-img" src="{{ $shop->image_url }}" alt="店舗画像">
                         <div class="tag-area">
                             <div class="tag__item">{{ $shop->area->name }}</div>
                             <div class="tag__item">{{ $shop->genre->name }}</div>

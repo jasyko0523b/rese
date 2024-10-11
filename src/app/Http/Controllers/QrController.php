@@ -27,7 +27,6 @@ class QrController extends Controller
         return view('qr_reservation', $data);
     }
 
-
     public function download(Request $request)
     {
         $path = $request->input('path');
@@ -38,7 +37,6 @@ class QrController extends Controller
         };
         return response()->file(Storage::path($path));
     }
-
 
     public function reservation_info($reservation_id)
     {

@@ -7,7 +7,6 @@ use Exception;
 
 class PaymentController extends Controller
 {
-
     public function amount()
     {
         return view('payment.amount');

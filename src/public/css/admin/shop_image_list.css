@@ -1,0 +1,74 @@
+.image-form {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.error-message {
+    color: red;
+}
+
+.image-list {
+    margin-top: 10px;
+}
+
+.image-card {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    margin-top: 5px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    align-items: center;
+}
+
+.image-area {
+    width: 70%;
+    height: 100%;
+}
+
+.shop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.group-row {
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    flex: 0 0 70%;
+    max-width: 70%;
+    height: calc(2.25rem);
+    border: none;
+    border-radius: 5px;
+}
+
+.input-field::file-selector-button {
+    appearance: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #305dff;
+    border: none;
+    border-radius: 5px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.submit-button {
+    cursor: pointer;
+    appearance: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background-color: #0538ff;
+    border: none;
+    border-radius: 5px;
+}

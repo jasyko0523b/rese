@@ -17,14 +17,13 @@ class ShopController extends Controller
     public function detail($shop_id)
     {
         $shop = Shop::find($shop_id);
-        if(Auth::check()){
+        if (Auth::check()) {
             $my_review = Auth::user()->getReviewOfShop($shop->id);
-        }else{
+        } else {
             $my_review = null;
         }
         return view('shop_detail', compact('shop', 'my_review'));
     }
-
 
     public function owner_detail(Request $request)
     {
@@ -35,14 +34,12 @@ class ShopController extends Controller
         return view('owner.shop_detail', compact('shop', 'areas', 'genres'));
     }
 
-
     public function register()
     {
         $areas = Area::all();
         $genres = Genre::all();
         return view('admin.shop_register', compact('areas', 'genres'));
     }
-
 
     public function create(ShopRegisterRequest $request)
     {
@@ -65,7 +62,6 @@ class ShopController extends Controller
         return redirect('admin/shop_register')->with('message', '作成されました');
     }
 
-
     public function update_text(Request $request)
     {
         $user = $request->user();
@@ -81,7 +77,6 @@ class ShopController extends Controller
         $shop->update($new_shop);
         return redirect('owner/shop_detail');
     }
-
 
     public function update_image(Request $request)
     {

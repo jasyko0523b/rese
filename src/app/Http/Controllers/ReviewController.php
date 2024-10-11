@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReviewRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Review;
 use App\Models\Shop;
@@ -26,7 +26,6 @@ class ReviewController extends Controller
     {
         $my_review = Auth::user()->getReviewOfShop($shop_id);
 
-        //update
         if ($my_review != null) {
             $this->update($shop_id, $my_review, $request);
         } else {
@@ -38,7 +37,7 @@ class ReviewController extends Controller
     public function delete($shop_id, Request $request)
     {
         Review::find($request->review_id)->deleteWithImage();
-        return redirect('/detail/' . $shop_id)->with('message', '口コミを削除しました');
+        return redirect('/detail/' . $shop_id);
     }
 
     private function create($shop_id, $request)

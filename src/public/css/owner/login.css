@@ -49,11 +49,11 @@
 }
 
 .input-wrap.email__wrap::before {
-    background-image: url(../img/email.svg);
+    background-image: url(../../img/email.svg);
 }
 
 .input-wrap.password__wrap::before {
-    background-image: url(../img/lock.svg);
+    background-image: url(../../img/lock.svg);
 }
 
 .submit-button__wrap {

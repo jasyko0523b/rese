@@ -30,6 +30,7 @@
                     <li><a href="/admin/dashboard">店舗一覧</a></li>
                     <li><a href="/admin/shop_register">店舗登録</a></li>
                     <li><a href="/admin/shop_csv">CSV読み込み</a></li>
+                    <li><a href="/admin/shop_image">画像アップロード</a></li>
                     <li><a href="/admin/email">メール一斉送信</a></li>
                     @endcan
                     @can('owner')

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
 
 use App\Models\Shop;
 use App\Models\Reservation;
-use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -17,7 +17,6 @@ class ReservationController extends Controller
         $favorite = Shop::whereIn('id', Auth::user()->favorite)->get();
         return view('my_page', compact('favorite', 'reservations'));
     }
-
 
     public function index(Request $request)
     {
@@ -51,7 +50,6 @@ class ReservationController extends Controller
         );
     }
 
-
     public function create(ReservationRequest $request)
     {
         Reservation::create([
@@ -62,7 +60,6 @@ class ReservationController extends Controller
         ]);
         return view('done');
     }
-
 
     public function update(ReservationRequest $request)
     {
@@ -75,7 +72,6 @@ class ReservationController extends Controller
         );
         return redirect('mypage');
     }
-
 
     public function delete(Request $request)
     {

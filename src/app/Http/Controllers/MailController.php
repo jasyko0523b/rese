@@ -14,7 +14,6 @@ class MailController extends Controller
         return view('admin.email_writing');
     }
 
-
     public function send_all(Request $request)
     {
         $subject = $request->subject;
@@ -25,5 +24,4 @@ class MailController extends Controller
         }
         return redirect('admin/email')->with('message', '送信されました');
     }
-
 }
