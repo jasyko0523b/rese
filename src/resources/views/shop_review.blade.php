@@ -11,14 +11,13 @@
         <h1 class="title">今回のご利用はいかがでしたか？</h1>
         <div class="shop-card">
             @if($shop->image_url != null)
-            <img class="card-img" src="{{ $shop->image_url }}" alt="" srcset="">
+            <img class="card-img" src="{{ $shop->image_url }}" alt="" onerror="this.onerror = null;invalidImage(this);">
             @else
             <div class="card-img card-img--null">画像はありません</div>
             @endif
             <div class="card-text">
                 <h3 class="card-title">{{ $shop->name }}</h3>
                 <div class="shop-id" hidden>{{ $shop->id }}</div>
-                <div class="score">{{ $shop->averageRating() }}</div>
                 <div class="tag-area">
                     <div class="tag-item">{{ $shop->area->name }}</div>
                     <div class="tag-item">{{ $shop->genre->name }}</div>
@@ -60,7 +59,10 @@
                 </div>
             </div>
             <h2>口コミを投稿</h2>
-            <textarea class="comment" name="comment" id="comment" placeholder="カジュアルな夜のお出かけにおすすめのスポット">@if($my_review){{$my_review->comment}}@endif</textarea>
+            <textarea class="comment" name="comment" id="comment" placeholder="カジュアルな夜のお出かけにおすすめのスポット">
+@if(old('comment')){{ old('comment') }}@else
+@if($my_review){{$my_review->comment}}@endif
+@endif</textarea>
             <div class="align-right">
                 <div class="text-count"></div>
             </div>
@@ -98,7 +100,13 @@
 @section('js')
 <script>
     const ratingStarDiv = document.querySelector('.rating-star');
-    <?php if ($my_review) { ?>;
+    <?php if (old('rank')) { ?>
+            [...ratingStarDiv.children].forEach((rate) => {
+                if (rate.value == "{{old('rank')}}") {
+                    rate.checked = true;
+                }
+            });
+    <?php } else if ($my_review) { ?>;
         [...ratingStarDiv.children].forEach((rate) => {
             if (rate.value == '{{$my_review->rank}}') {
                 rate.checked = true;
@@ -107,9 +115,10 @@
     <?php } ?>
 </script>
 <script type="text/javascript"
-    src="{{ asset('js/textCount.js') }}">
+    src="{{ asset('js/textCounter.js') }}">
 </script>
 <script type="text/javascript"
     src="{{ asset('js/dropImage.js') }}">
 </script>
+<script type="text/javascript" src="{{ asset('js/invalidImage.js') }}"></script>
 @endsection

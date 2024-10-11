@@ -31,6 +31,7 @@ class ReviewRequest extends FormRequest
             'user_id' => ['exists:users,id', 'required', 'integer'],
             'rank' => ['required', 'integer', 'min:1', 'max:5'],
             'comment' => ['nullable', 'string', 'max:400'],
+            'review_img' => ['nullable', 'file', 'mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,png'],
         ];
     }
 }

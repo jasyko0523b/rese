@@ -31,7 +31,7 @@ class CsvRequest extends FormRequest
             'csv_array' => ['required', 'array'],
             'csv_array.*.name' => ['required', 'string', 'max:50'],
             'csv_array.*.email' => ['required', 'string', 'unique:users,email', 'distinct:ignore_case'],
-            'csv_array.*.password' => ['required', 'string'],
+            'csv_array.*.password' => ['required', 'string', 'min:8', 'max:191'],
             'csv_array.*.area_id' => ['required', 'integer', 'exists:areas,id'],
             'csv_array.*.genre_id' => ['required', 'integer', 'exists:genres,id'],
             'csv_array.*.sentence' => ['required', 'string', 'max:400'],
@@ -109,6 +109,7 @@ class CsvRequest extends FormRequest
             $messages["csv_array.{$key}.name.string"] = "{$index}行目[name] - 文字列を使用してください - 入力値:{$value['name']}";
             $messages["csv_array.{$key}.name.max"] = "{$index}行目[name] - 50字以内で設定してください - 入力値:" . strlen($value['name']) . '字';
             $messages["csv_array.{$key}.password.required"] = "{$index}行目[password] - 入力必須です";
+            $messages["csv_array.{$key}.password.min"] = "{$index}行目[password] - 8字以上で設定してください";
             $messages["csv_array.{$key}.email.required"] = "{$index}行目[email] - 入力必須です";
             $messages["csv_array.{$key}.email.unique"] = "{$index}行目[email] - 既に使用されています - 入力値:{$value['email']}";
             $messages["csv_array.{$key}.email.distinct"] = "{$index}行目[email] - 重複しています - 入力値:{$value['email']}";

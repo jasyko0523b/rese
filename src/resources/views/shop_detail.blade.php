@@ -129,7 +129,7 @@
                         </div>
                     </div>
                     <div class="review__header--right">
-                        <div class="review__header-date">{{ str_replace('-', '/', substr($my_review->created_at, 0, 10)) }}</div>
+                        <div class="review__header-date">{{ str_replace('-', '/', substr($my_review->updated_at, 0, 10)) }}</div>
                     </div>
                 </div>
                 @if($my_review->comment != null || $my_review->image_url != null)
@@ -170,7 +170,7 @@
                         <button class="review-delete-button" type="submit">削除する</button>
                     </form>
                     @endcan
-                    <div class="review__header-date">{{ str_replace('-', '/', substr($review->created_at, 0, 10)) }}</div>
+                    <div class="review__header-date">{{ str_replace('-', '/', substr($review->updated_at, 0, 10)) }}</div>
                 </div>
             </div>
             @if($review->comment != null || $review->image_url != null)
